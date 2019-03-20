@@ -4,14 +4,24 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.3.RELEASE")
+        classpath "com.github.jengelman.gradle.plugins:shadow:5.0.0"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.1.3.RELEASE"
         classpath "se.transmode.gradle:gradle-docker:1.2"
     }
 }
 
-//apply plugin: 'org.springframework.boot'
+apply plugin: 'org.springframework.boot'
 
-subprojects {
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    apply plugin: 'io.spring.dependency-management'
+
+    apply plugin: 'com.github.johnrengelman.shadow'
+    apply plugin: 'application'
+
+
     repositories {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         mavenCentral()
@@ -22,15 +32,10 @@ subprojects {
         springCloudVersion = 'Greenwich.RELEASE'
     }
 
-    
-    apply plugin: 'java'
-    apply plugin: "io.spring.dependency-management"
-
     group = 'store.zabbix'
     version = 1.0
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
-
 
 
     dependencies {
@@ -39,10 +44,12 @@ subprojects {
         implementation "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
         implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
         implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
+        implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
         implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
         testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
         implementation 'org.projectlombok:lombok:1.18.6'
         implementation 'com.google.code.gson:gson:2.8.5'
+        implementation "org.springframework.boot:spring-boot-starter-tomcat:${springBootVersion}"
     }
 
     dependencyManagement {
@@ -52,7 +59,7 @@ subprojects {
     }
 
     if (project.subprojects) {
-        bootRepackage {
+        shadowJar {
             enabled = false
         }
     } else {
@@ -61,7 +68,7 @@ subprojects {
             maintainer = 'cuifuan <cuifuan@aliyun.com>'
             baseImage = 'openjdk:8-jre-alpine'
         }
-        task dockerBuild(type: Docker, dependsOn: build) {
+        task dockerBuild(type: Docker, dependsOn: shadowJar) {
             applicationName = project.name
             addFile {
                 from configurations.archives.artifacts.files

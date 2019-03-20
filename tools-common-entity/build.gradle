@@ -4,13 +4,17 @@ plugins{
     id 'java-library'
     id 'org.springframework.boot'  apply(false)
 }
-
+//
 dependencyManagement {
     imports {
         mavenBom SpringBootPlugin.BOM_COORDINATES
     }
 }
-
+shadowJar {
+    enabled = false
+}
+//mainClassName = '我也不知道这个有啥用，但是你就是不要删'
 dependencies {
     implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
 }
+//mainClassName = 'store.zabbix.common.ToolsCommonEntityApplication'

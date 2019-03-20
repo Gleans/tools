@@ -1,6 +1,8 @@
 package store.zabbix.toolscrudjpa;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -39,3 +41,19 @@ public class ToolsJpaExtraApplication extends SpringBootServletInitializer {
     }
 
 }
+
+//@EntityScan(basePackages = {"store.zabbix.common.entity"})
+//@EnableJpaRepositories(basePackages = {"store.zabbix.toolscrudjpa"})
+//@RestController
+//@SpringBootApplication
+//public class ToolsJpaExtraApplication {
+//
+//    public static void main(String[] args) {
+//        SpringApplication.run(ToolsJpaExtraApplication.class, args);
+//    }
+//
+//    @RequestMapping("/")
+//    public String index() {
+//        return "Hello Docker!";
+//    }
+//}
