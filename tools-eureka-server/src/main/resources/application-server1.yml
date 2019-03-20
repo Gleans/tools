@@ -1,0 +1,6 @@
+server:
+  port: 8762
+eureka:
+  client:
+    service-url:
+      defaultZone: http://springcloud-tools:8761/eureka/

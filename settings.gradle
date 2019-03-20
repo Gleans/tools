@@ -1,0 +1,13 @@
+rootProject.name = 'springcloud-tools'
+//include 'tools-eureka-server'//注册中心
+include 'tools-common-entity'
+//include 'tools-config-client'
+//include 'tools-config-server'
+//include 'tools-eureka-client'
+//include 'tools-redis-learning'
+//include 'tools-resilience4j'
+//include 'tools-routing'
+//include 'tools-zipkin-client'
+include 'tools-crud-jpa'
+//include 'tools-oauth2'
+//include 'tools-system-api'

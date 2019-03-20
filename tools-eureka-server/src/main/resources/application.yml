@@ -1,0 +1,13 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: eureka-server
+eureka:
+  client:
+    #值为false意味着自身仅作为服务器，不作为客户端
+    register-with-eureka: false
+    # 无需注册自身
+    fetch-registry: false
+    service-url:
+      defaultZone: http://springcloud-tools:8762/eureka/

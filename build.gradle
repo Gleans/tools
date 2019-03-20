@@ -1,0 +1,75 @@
+buildscript {
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.3.RELEASE")
+        classpath "se.transmode.gradle:gradle-docker:1.2"
+    }
+}
+
+//apply plugin: 'org.springframework.boot'
+
+subprojects {
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
+    }
+
+    ext {
+        springBootVersion = '2.1.3.RELEASE'
+        springCloudVersion = 'Greenwich.RELEASE'
+    }
+
+    
+    apply plugin: 'java'
+    apply plugin: "io.spring.dependency-management"
+
+    group = 'store.zabbix'
+    version = 1.0
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+
+
+    dependencies {
+        implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
+        implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+        implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
+        implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
+        testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+        implementation 'org.projectlombok:lombok:1.18.6'
+        implementation 'com.google.code.gson:gson:2.8.5'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+
+    if (project.subprojects) {
+        bootRepackage {
+            enabled = false
+        }
+    } else {
+        apply plugin: 'docker'
+        docker {
+            maintainer = 'cuifuan <cuifuan@aliyun.com>'
+            baseImage = 'openjdk:8-jre-alpine'
+        }
+        task dockerBuild(type: Docker, dependsOn: build) {
+            applicationName = project.name
+            addFile {
+                from configurations.archives.artifacts.files
+                into '/data/workspace/' + project.name
+            }
+            workingDir '/data/workspace/' + project.name
+            setEnvironment('HOST_MACHINE_IP', 'springcloud-tools')
+            defaultCommand(['java', '-jar', '-Dspring.profiles.active=docker', "${project.name}-${project.version}.jar"])
+        }
+    }
+}

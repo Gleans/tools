@@ -1,0 +1,16 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
+plugins{
+    id 'java-library'
+    id 'org.springframework.boot'  apply(false)
+}
+
+dependencyManagement {
+    imports {
+        mavenBom SpringBootPlugin.BOM_COORDINATES
+    }
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+}

@@ -1,0 +1,12 @@
+server:
+  port: 7002
+spring:
+  application:
+    name: config-client
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://springcloud-tools:8761/eureka/

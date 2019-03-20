@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    config:
+      name: config-client
+      uri: http://springcloud-tools:7001/
+      label: master
+      profile: dev
+      fail-fast: true

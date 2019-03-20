@@ -1,0 +1,26 @@
+server:
+  port: 7001
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/cuifuan/springcloud-tools.git
+          search-paths: tools-config-repo
+          default-label: master
+          username:
+          password:
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://springcloud-tools:8761/eureka/
+info:
+  app:
+    name: tools-config-server
+    description: This is Spring Cloud remote Registration center.
+    version: 0.0.1-SNAPSHOT

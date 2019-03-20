@@ -1,0 +1,43 @@
+server:
+  port: 8768
+spring:
+  application:
+    name: tools-resilience4j
+eureka:
+  client:
+    service-url:
+      defaultZone: http://springcloud-tools:8761/eureka/
+resilience4j:
+  circuitbreaker:
+    backends:
+      backendA:
+        registerHealthIndicator: true
+        #        设置当断路器处于   CLOSED     状态下的ring buffer的大小，它存储了最近一段时间请求的成功失败状态，默认为  100
+        ringBufferSizeInClosedState: 20
+        #        设置当断路器处于  HALF_OPEN   状态下的ring buffer的大小，它存储了最近一段时间请求的成功失败状态，默认为  10
+        ringBufferSizeInHalfOpenState: 5
+        #        用来指定断路器从OPEN到HALF_OPEN状态等待的时长，默认是60秒
+        waitDurationInOpenState: 60s
+        #        触发熔断的失败率阈值,注意是失败率
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+        #        用于判断哪些异常应该算作失败纳入断路器统计，默认是Throwable类型
+        recordFailurePredicate: store.zabbix.common.exception.RecordFailurePredicate
+        #        当waitDurationInOpenState时间一过，是否自动从OPEN切换到HALF_OPEN，默认为true
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+  ratelimiter:
+    limiters:
+      limiterA:
+        #       每时间单位 可执行处理数
+        limit-for-period: 1
+        #       单位时间（毫秒）
+        limit-refresh-period-in-millis: 3000
+        #       超时时间
+        timeout-in-millis: 1000
+# Metrics related configurations
+management:
+  endpoints:
+    # Endpoint Web Configuration
+    web:
+      exposure:
+        include: "*"

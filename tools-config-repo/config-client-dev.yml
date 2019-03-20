@@ -1,0 +1,7 @@
+message: cuifuan
+## Configuring info endpoint
+info:
+  app:
+    name: tools-config-client
+    description: This is Spring Cloud remote Registration center.
+    version: 0.0.1-SNAPSHOT

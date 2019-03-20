@@ -1,0 +1,20 @@
+ext {
+    resilience4jVersion = '0.13.2'
+}
+dependencies {
+    implementation "io.github.resilience4j:resilience4j-reactor:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-circuitbreaker:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-timelimiter:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-ratelimiter:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-bulkhead:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-metrics:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-prometheus:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-retry:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-core:${resilience4jVersion}"
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation 'io.vavr:vavr:0.9.3'
+    implementation project(":tools-common-entity")
+
+}
