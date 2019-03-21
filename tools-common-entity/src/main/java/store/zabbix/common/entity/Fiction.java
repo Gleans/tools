@@ -6,10 +6,9 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 
-@Setter
-@Getter
 @Entity
 @Table(name = Fiction.TABLE_NAME)
+@Data
 public class Fiction {
     public static final String TABLE_NAME = "fiction";
 

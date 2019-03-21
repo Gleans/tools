@@ -21,8 +21,13 @@ public class FictionController {
 
     @GetMapping("fiction")
     public List<Fiction> getFiction(){
-        return fictionRepository.findAllById(new ArrayList<Integer>(){{
+        List<Integer> list = new ArrayList<Integer>(){{
             add(1);
-        }});
+            add(2);
+            add(3);
+            add(4);
+        }};
+        List<Fiction> list1 =  fictionRepository.findAllById(list);
+        return list1;
     }
 }

@@ -1,4 +1,4 @@
 eureka:
   client:
     service-url:
-      defaultZone: http://springcloud-tools:8761/eureka/
+      defaultZone: http://39.104.181.183:8761/eureka/

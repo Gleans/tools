@@ -6,9 +6,11 @@ spring:
   # 数据源配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://springcloud-tools:3306/springcloud-tools?characterEncoding=utf-8&useSSL=false
+#    url: jdbc:mysql://springcloud-tools:3306/springcloud-tools?characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://47.93.29.239:3306/zabbixmanager?characterEncoding=utf-8&useSSL=false
     username: root
-    password: pass1234
+    password: hongshi123
+#    password: pass1234
   jpa:
     # 在 SrpingBoot 2.0 版本中，Hibernate 创建数据表的时候，默认的数据库存储引擎选择的是 MyISAM
     #（之前好像是 InnoDB，这点比较诡异）。这个参数是在建表的时候，将默认的存储引擎切换为 InnoDB 用的。
@@ -27,4 +29,5 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://springcloud-tools:8761/eureka/
+      defaultZone: http://39.104.181.183:8761/eureka/
+#      defaultZone: http://springcloud-tools:8761/eureka/

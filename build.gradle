@@ -61,7 +61,7 @@ allprojects {
     }
 
     if (project.subprojects) {
-        shadowJar {
+        bootJar {
             enabled = false
         }
     } else {
@@ -69,14 +69,15 @@ allprojects {
             maintainer = 'cuifuan <cuifuan@aliyun.com>'
             baseImage = 'openjdk:8-jre-alpine'
         }
-        task dockerBuild(type: Docker, dependsOn: shadowJar) {
+        task dockerBuild(type: Docker, dependsOn: bootJar) {
             applicationName = project.name
             addFile {
                 from configurations.archives.artifacts.files
                 into '/data/workspace/' + project.name
             }
             workingDir '/data/workspace/' + project.name
-            setEnvironment('HOST_MACHINE_IP', 'springcloud-tools')
+            setEnvironment('HOST_MACHINE_IP', '10.0.0.82')
+//            setEnvironment('HOST_MACHINE_IP', 'springcloud-tools')
             defaultCommand(['java', '-jar', '-Dspring.profiles.active=docker', "${project.name}-${project.version}.jar"])
         }
     }
