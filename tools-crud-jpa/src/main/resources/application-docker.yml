@@ -1,4 +1,4 @@
 eureka:
   client:
     service-url:
-      defaultZone: http://39.104.181.183:8761/eureka/
+      defaultZone: http://${HOST_MACHINE_IP}:8761/eureka/

@@ -4,13 +4,25 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.github.jengelman.gradle.plugins:shadow:5.0.0"
         classpath "org.springframework.boot:spring-boot-gradle-plugin:2.1.3.RELEASE"
         classpath "se.transmode.gradle:gradle-docker:1.2"
     }
 }
 
+
+apply plugin: 'docker'
+apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
+
+gradle.afterProject { p ->
+    if (project.name == "tools-common-entity") {
+        jar.enabled = false
+        println("编译公共类=================begin")
+        compileJava
+        println("编译公共类=================end")
+    }
+}
+
 
 allprojects {
 
@@ -19,7 +31,6 @@ allprojects {
     apply plugin: 'docker'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
-    apply plugin: 'com.github.johnrengelman.shadow'
     apply plugin: 'application'
 
 
@@ -28,30 +39,26 @@ allprojects {
         mavenCentral()
     }
 
-    ext {
-        springBootVersion = '2.1.3.RELEASE'
-        springCloudVersion = 'Greenwich.RELEASE'
-    }
-
     group = 'store.zabbix'
     version = 1.0
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 
-
     dependencies {
-        implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
-        implementation "org.springframework.cloud:spring-cloud-starter-config"
-        implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-        implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
-        implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
-        implementation "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
-        implementation "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
-        implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
-        testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
-        implementation 'org.projectlombok:lombok:1.18.6'
+        if (project.name != "tools-common-entity") {
+            implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+            implementation "org.springframework.cloud:spring-cloud-starter-config"
+            implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+            implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
+            implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+            implementation "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
+            implementation "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
+            implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
+            implementation project(':tools-common-entity')
+        }
+        compileOnly 'org.projectlombok:lombok:1.18.6'
         implementation 'com.google.code.gson:gson:2.8.5'
-        compileOnly "org.springframework.boot:spring-boot-starter-tomcat:${springBootVersion}"
+        testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
     }
 
     dependencyManagement {
@@ -60,25 +67,38 @@ allprojects {
         }
     }
 
+
     if (project.subprojects) {
-        bootJar {
-            enabled = false
-        }
+        jar.enabled = false
     } else {
-        docker {
-            maintainer = 'cuifuan <cuifuan@aliyun.com>'
-            baseImage = 'openjdk:8-jre-alpine'
-        }
-        task dockerBuild(type: Docker, dependsOn: bootJar) {
-            applicationName = project.name
-            addFile {
-                from configurations.archives.artifacts.files
-                into '/data/workspace/' + project.name
+        if (project.name == "tools-common-entity") {
+            jar.enabled = false
+        } else {
+            docker {
+                maintainer = 'cuifuan <cuifuan@aliyun.com>'
+                baseImage = 'openjdk:8-jre-alpine'
             }
-            workingDir '/data/workspace/' + project.name
-            setEnvironment('HOST_MACHINE_IP', '10.0.0.82')
-//            setEnvironment('HOST_MACHINE_IP', 'springcloud-tools')
-            defaultCommand(['java', '-jar', '-Dspring.profiles.active=docker', "${project.name}-${project.version}.jar"])
+
+            bootJar {
+                doFirst {
+                    copy {
+                        from "../tools-common-entity/build/classes/java/main/store/zabbix"
+                        into "./build/classes/java/main/store/zabbix"
+                    }
+                }
+            }
+
+            task dockerBuild(type: Docker) {
+                applicationName = project.name
+                dependsOn(bootJar)
+                addFile {
+                    from configurations.archives.artifacts.files
+                    into '/data/workspace/' + project.name
+                }
+                workingDir '/data/workspace/' + project.name
+                setEnvironment('HOST_MACHINE_IP', "${hostMachineIp}")
+                defaultCommand(['java', '-jar', '-Dspring.profiles.active=docker', "${project.name}-${project.version}.jar"])
+            }
         }
     }
 }
