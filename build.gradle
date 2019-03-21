@@ -14,7 +14,7 @@ apply plugin: 'docker'
 apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
 
-gradle.afterProject { p ->
+gradle.beforeProject { p ->
     if (project.name == "tools-common-entity") {
         jar.enabled = false
         println("编译公共类=================begin")
@@ -66,8 +66,7 @@ allprojects {
             mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
         }
     }
-
-
+    
     if (project.subprojects) {
         jar.enabled = false
     } else {
