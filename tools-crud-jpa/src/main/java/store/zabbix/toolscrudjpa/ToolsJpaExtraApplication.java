@@ -14,10 +14,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@SpringCloudApplication
 @EntityScan(basePackages = {"store.zabbix.common.entity"})
 @EnableJpaRepositories(basePackages = {"store.zabbix.toolscrudjpa"})
 @RestController
+@SpringCloudApplication
 public class ToolsJpaExtraApplication extends SpringBootServletInitializer {
 
     @Override
