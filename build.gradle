@@ -25,7 +25,6 @@ gradle.beforeProject { p ->
 
 
 allprojects {
-
     apply plugin: 'java'
     apply plugin: 'idea'
     apply plugin: 'docker'
@@ -54,7 +53,11 @@ allprojects {
             implementation "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
             implementation "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
             implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
-            implementation project(':tools-common-entity')
+            implementation "org.springframework.cloud:spring-cloud-bus"
+            implementation "org.springframework.cloud:spring-cloud-starter-bus-amqp"
+            if (project.name != "tools-eureka-server") {
+                implementation project(':tools-common-entity')
+            }
         }
         compileOnly 'org.projectlombok:lombok:1.18.6'
         implementation 'com.google.code.gson:gson:2.8.5'

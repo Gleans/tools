@@ -3,27 +3,6 @@ server:
 spring:
   application:
     name: eureka-client
-  # 数据源配置
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://springcloud-tools:3306/springcloud-tools?characterEncoding=utf-8&useSSL=false
-    username: root
-    password: pass1234
-  jpa:
-    # 在 SrpingBoot 2.0 版本中，Hibernate 创建数据表的时候，默认的数据库存储引擎选择的是 MyISAM
-    #（之前好像是 InnoDB，这点比较诡异）。这个参数是在建表的时候，将默认的存储引擎切换为 InnoDB 用的。
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    # spring.jpa.show-sql=true 配置在日志中打印出执行的 SQL 语句信息。
-    show-sql: true
-    # 配置指明在程序启动的时候要删除并且创建实体类对应的表。
-    # create 这个参数很危险，因为他会把对应的表删除掉然后重建。所以千万不要在生成环境中使用。只有在测试环境中，一开始初始化数据库结构的时候才能使用一次。
-    # ddl-auto:create----每次运行该程序，没有表格会新建表格，表内有数据会清空
-    # ddl-auto:create-drop----每次程序结束的时候会清空表
-    # ddl-auto:update----每次运行程序，没有表格会新建表格，表内有数据不会清空，只会更新(推荐)
-    # ddl-auto:validate----运行程序会校验数据与数据库的字段类型是否相同，不同会报错
-    hibernate.ddl-auto: update
-  main:
-    allow-bean-definition-overriding: true
 eureka:
   client:
     service-url:
