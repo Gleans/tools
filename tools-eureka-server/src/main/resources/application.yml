@@ -4,6 +4,9 @@ spring:
   application:
     name: eureka-server
 eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     #值为false意味着自身仅作为服务器，不作为客户端
     register-with-eureka: false

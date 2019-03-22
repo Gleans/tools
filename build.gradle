@@ -15,7 +15,7 @@ apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
 
 gradle.beforeProject { p ->
-    if (project.name == "tools-common-entity") {
+    if (project.name == "${toolsCommonEntity}") {
         jar.enabled = false
         println("编译公共类=================begin")
         compileJava
@@ -43,23 +43,22 @@ allprojects {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 
+    def noCommonList = ["tools-eureka-server", "tools-config-server", "tools-eureka-client", "tools-config-client"]
+    def projectName = project.name
     dependencies {
-        if (project.name != "tools-common-entity") {
+        if (projectName != ":${toolsCommonEntity}") {
             implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
-            implementation "org.springframework.cloud:spring-cloud-starter-config"
             implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
             implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
-            implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
             implementation "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
             implementation "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
             implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
-            implementation "org.springframework.cloud:spring-cloud-bus"
-            implementation "org.springframework.cloud:spring-cloud-starter-bus-amqp"
-            if (project.name != "tools-eureka-server") {
-                implementation project(':tools-common-entity')
+            if (!noCommonList.any{val -> val == projectName}) {
+                implementation project(":${toolsCommonEntity}")
             }
         }
         compileOnly 'org.projectlombok:lombok:1.18.6'
+        annotationProcessor 'org.projectlombok:lombok:1.18.6'
         implementation 'com.google.code.gson:gson:2.8.5'
         testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
     }
@@ -69,11 +68,11 @@ allprojects {
             mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
         }
     }
-    
+
     if (project.subprojects) {
         jar.enabled = false
     } else {
-        if (project.name == "tools-common-entity") {
+        if (project.name == "${toolsCommonEntity}") {
             jar.enabled = false
         } else {
             docker {

@@ -1,6 +1,8 @@
 server:
   port: 7001
 spring:
+  devtools:
+    add-properties: false
   application:
     name: config-server
   cloud:
@@ -10,8 +12,16 @@ spring:
           uri: https://github.com/cuifuan/springcloud-tools.git
           search-paths: tools-config-repo
           default-label: master
-          username:
+          username: fuancui@gmail.com
           password:
+    bus:
+      trace:
+        enabled: true
+  rabbitmq:
+    host: springcloud-tools
+    port: 5672
+    username: admin
+    password: 123456
 eureka:
   instance:
     prefer-ip-address: true
@@ -24,3 +34,7 @@ info:
     name: tools-config-server
     description: This is Spring Cloud remote Registration center.
     version: 0.0.1-SNAPSHOT
+# 刷新时关闭安全验证,已过时删除
+#management:
+#  security:
+#    enabled: true

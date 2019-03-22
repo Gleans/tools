@@ -9,9 +9,3 @@ spring:
     name: eureka-client
   main:
     allow-bean-definition-overriding: true
-  rabbitmq:
-    host: 10.0.0.33
-    port: 15672
-    username: guest
-    password: guest
-
