@@ -20,7 +20,7 @@ spring:
     hibernate.ddl-auto: update
   main:
     allow-bean-definition-overriding: true
-message: cuifuan-test3-cui
+message: cuifuan-test3-cui-ciu
 ## Configuring info endpoint
 info:
   app:
