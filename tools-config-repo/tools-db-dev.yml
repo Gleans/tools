@@ -20,7 +20,7 @@ spring:
     hibernate.ddl-auto: update
   main:
     allow-bean-definition-overriding: true
-message: cuifuan-test3-cui-ciu
+message: I wanna see you anymore.
 ## Configuring info endpoint
 info:
   app:
