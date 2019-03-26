@@ -19,5 +19,4 @@ dependencyManagement {
     }
 }
 
-//mainClassName = 'store.zabbix.common.CommonEntity'
-mainClassName = '111'
+mainClassName = 'store.zabbix.common.CommonEntity'

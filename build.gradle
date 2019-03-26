@@ -51,7 +51,7 @@ allprojects {
             implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
             implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
             implementation "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
-            implementation "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
+//            implementation "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
             implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
             if (!noCommonList.any{val -> val == projectName}) {
                 implementation project(":${toolsCommonEntity}")
