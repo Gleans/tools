@@ -1,9 +1,14 @@
-package store.zabbix.common.bean;
+package store.zabbix.common.base.bean;
 
 import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * 统一返回的Bean
+ *
+ * @author 晓风轻 https://github.com/xwjie/PLMCodeTemplate
+ */
 @Data
 public class ResultBean<T> implements Serializable {
 

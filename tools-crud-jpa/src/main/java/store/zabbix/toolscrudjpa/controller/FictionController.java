@@ -3,8 +3,7 @@ package store.zabbix.toolscrudjpa.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import store.zabbix.common.entity.Fiction;
-import store.zabbix.common.zabbix.ZabbixUtil;
+import store.zabbix.common.jpa.entity.Fiction;
 import store.zabbix.toolscrudjpa.repository.FictionRepository;
 
 import java.util.ArrayList;
@@ -30,10 +29,8 @@ public class FictionController {
         }};
         List<Fiction> list1 =  fictionRepository.findAllById(list);
 
-        ZabbixUtil zabbixUtil=new ZabbixUtil();
-        boolean b=zabbixUtil.init();
-        System.out.println("zabbix api 调用"+(b==true?"成功":"失败"));
         return list1;
+
     }
 
 }

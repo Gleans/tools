@@ -1,0 +1,38 @@
+//import org.springframework.boot.gradle.plugin.SpringBootPlugin
+//
+////plugins {
+////	id 'java-library'
+////	id 'org.springframework.boot' apply false
+////}
+//
+//
+//dependencies {
+////	implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+////	implementation 'io.github.openfeign:feign-httpclient'
+//}
+//
+//
+//dependencyManagement {
+//	imports {
+//		mavenBom SpringBootPlugin.BOM_COORDINATES
+//	}
+//}
+//
+////mainClassName = 'store.zabbix.common.CommonEntity'
+//
+//subprojects {
+//	dependencyManagement {
+//		imports {
+//			mavenBom SpringBootPlugin.BOM_COORDINATES
+//		}
+//	}
+//}
+
+subprojects {
+    dockerCreateDockerfile {
+        enabled = false
+    }
+    dockerBuildImage{
+        enabled = false
+    }
+}

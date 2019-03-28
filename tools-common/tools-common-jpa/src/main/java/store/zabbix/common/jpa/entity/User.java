@@ -1,4 +1,4 @@
-package store.zabbix.common.entity;
+package store.zabbix.common.jpa.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

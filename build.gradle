@@ -1,37 +1,24 @@
-buildscript {
-    repositories {
-        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.1.3.RELEASE"
-        classpath "se.transmode.gradle:gradle-docker:1.2"
-    }
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.1.3.RELEASE'
+    id 'com.bmuschko.docker-spring-boot-application' version '4.6.2'
 }
-
-
-apply plugin: 'docker'
-apply plugin: 'application'
-apply plugin: 'org.springframework.boot'
-
-gradle.beforeProject { p ->
-    if (project.name == "${toolsCommonEntity}") {
-        jar.enabled = false
-        println("编译公共类=================begin")
-        compileJava
-        println("编译公共类=================end")
-    }
-}
-
 
 allprojects {
     apply plugin: 'java'
     apply plugin: 'idea'
-    apply plugin: 'docker'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
-    apply plugin: 'application'
+    apply plugin: 'com.bmuschko.docker-spring-boot-application'
 
+    ext {
+        toolsCommon = "tools-common"
+        toolsCommonJpa = "tools-common-jpa"
+        toolsCommonBase = "tools-common-base"
+        hostMachineIp = "springcloud-tools"
+        springBootVersion = "2.1.3.RELEASE"
+        springCloudVersion = "Greenwich.RELEASE"
+    }
 
     repositories {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
@@ -43,24 +30,19 @@ allprojects {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 
-    def noCommonList = ["tools-eureka-server", "tools-config-server", "tools-eureka-client", "tools-config-client"]
-    def projectName = project.name
     dependencies {
-        if (projectName != ":${toolsCommonEntity}") {
-            implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
-            implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-            implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
-            implementation "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
-//            implementation "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
-            implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
-            if (!noCommonList.any{val -> val == projectName}) {
-                implementation project(":${toolsCommonEntity}")
-            }
-        }
+        implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+        implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+        implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
+        implementation "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
+        implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
+        //Gradle打包时使用lombok注解
         compileOnly 'org.projectlombok:lombok:1.18.6'
         annotationProcessor 'org.projectlombok:lombok:1.18.6'
         implementation 'com.google.code.gson:gson:2.8.5'
+        implementation 'com.alibaba:fastjson:1.2.56'
         testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+
     }
 
     dependencyManagement {
@@ -71,34 +53,25 @@ allprojects {
 
     if (project.subprojects) {
         jar.enabled = false
+        bootJar {
+            enabled = false
+        }
+        dockerCreateDockerfile {
+            enabled = false
+        }
+        dockerBuildImage {
+            enabled = false
+        }
     } else {
-        if (project.name == "${toolsCommonEntity}") {
-            jar.enabled = false
-        } else {
-            docker {
-                maintainer = 'cuifuan <cuifuan@aliyun.com>'
-                baseImage = 'openjdk:8-jre-alpine'
-            }
-
-            bootJar {
-                doFirst {
+        dockerSyncBuildContext {
+            doFirst {
+                if (project.name == 'tools-crud-jpa') {
                     copy {
-                        from "../tools-common-entity/build/classes/java/main/store/zabbix"
-                        into "./build/classes/java/main/store/zabbix"
+                        println('copy--------------------------common')
+                        from('../tools-common/tools-common-jpa/build/classes/java/main/store/zabbix/common')
+                        into('./build/classes/java/main/store/zabbix/common')
                     }
                 }
-            }
-
-            task dockerBuild(type: Docker) {
-                applicationName = project.name
-                dependsOn(bootJar)
-                addFile {
-                    from configurations.archives.artifacts.files
-                    into '/data/workspace/' + project.name
-                }
-                workingDir '/data/workspace/' + project.name
-                setEnvironment('HOST_MACHINE_IP', "${hostMachineIp}")
-                defaultCommand(['java', '-jar', '-Dspring.profiles.active=docker', "${project.name}-${project.version}.jar"])
             }
         }
     }

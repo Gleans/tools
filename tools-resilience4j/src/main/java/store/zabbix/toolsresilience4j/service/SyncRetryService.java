@@ -2,8 +2,8 @@ package store.zabbix.toolsresilience4j.service;
 
 import io.github.resilience4j.retry.Retry;
 import org.springframework.stereotype.Service;
-import store.zabbix.common.exception.RetryNeedException;
-import store.zabbix.common.exception.RetryNoNeedException;
+import store.zabbix.common.base.exception.RetryNeedException;
+import store.zabbix.common.base.exception.RetryNoNeedException;
 import store.zabbix.toolsresilience4j.utils.RetryConfigUtil;
 
 /**

@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import store.zabbix.common.exception.RetryNeedException;
+import store.zabbix.common.base.exception.RetryNeedException;
 import store.zabbix.toolsresilience4j.service.BusinessService;
 import store.zabbix.toolsresilience4j.service.SyncRetryService;
 import store.zabbix.toolsresilience4j.service.impl.BusinessServiceImpl;

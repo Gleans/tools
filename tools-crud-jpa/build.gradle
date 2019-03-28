@@ -1,7 +1,12 @@
 dependencies {
     implementation 'mysql:mysql-connector-java:8.0.15'
     implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
-    implementation project(":${toolsCommonEntity}")
-
+    compileOnly project(":${toolsCommon}:${toolsCommonJpa}")
 }
-mainClassName = "store.zabbix.toolscrudjpa.ToolsJpaExtraApplication"
+
+docker {
+    springBootApplication {
+        baseImage = 'openjdk:8-alpine'
+        ports = [8769, 8769]
+    }
+}

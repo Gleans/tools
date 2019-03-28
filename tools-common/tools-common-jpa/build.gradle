@@ -1,0 +1,9 @@
+plugins {
+    id 'java-library'
+    id 'org.springframework.boot' apply false
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+    implementation 'com.alibaba:druid:1.1.15'
+}

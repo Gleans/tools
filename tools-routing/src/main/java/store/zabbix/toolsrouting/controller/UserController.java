@@ -2,7 +2,7 @@ package store.zabbix.toolsrouting.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import store.zabbix.common.entity.User;
+import store.zabbix.common.jpa.entity.User;
 import store.zabbix.common.bean.ResultBean;
 import store.zabbix.toolsrouting.service.UserServiceClients;
 

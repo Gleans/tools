@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import store.zabbix.common.bean.ResultBean;
-import store.zabbix.common.entity.User;
+import store.zabbix.common.jpa.entity.User;
 import store.zabbix.toolsresilience4j.service.BusinessService;
 import store.zabbix.toolsresilience4j.service.EurekaClients8762;
 import store.zabbix.toolsresilience4j.service.SyncRetryService;

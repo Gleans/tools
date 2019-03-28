@@ -5,8 +5,8 @@ import io.github.resilience4j.retry.Retry;
 import io.github.resilience4j.retry.RetryConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import store.zabbix.common.exception.RetryNeedException;
-import store.zabbix.common.exception.RetryNoNeedException;
+import store.zabbix.common.base.exception.RetryNeedException;
+import store.zabbix.common.base.exception.RetryNoNeedException;
 import store.zabbix.toolsresilience4j.service.BusinessService;
 import store.zabbix.toolsresilience4j.utils.RetryThreadFactory;
 

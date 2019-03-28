@@ -22,7 +22,7 @@ resilience4j:
         failureRateThreshold: 50
         eventConsumerBufferSize: 10
         #        用于判断哪些异常应该算作失败纳入断路器统计，默认是Throwable类型
-        recordFailurePredicate: store.zabbix.common.exception.RecordFailurePredicate
+        recordFailurePredicate: store.zabbix.common.base.exception.RecordFailurePredicate
         #        当waitDurationInOpenState时间一过，是否自动从OPEN切换到HALF_OPEN，默认为true
         automaticTransitionFromOpenToHalfOpenEnabled: true
   ratelimiter:

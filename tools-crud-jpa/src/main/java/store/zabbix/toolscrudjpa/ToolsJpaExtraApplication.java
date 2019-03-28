@@ -14,10 +14,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@EntityScan(basePackages = {"store.zabbix.common.entity"})
-@EnableJpaRepositories(basePackages = {"store.zabbix.toolscrudjpa"})
+@EntityScan(basePackages = {"store.zabbix.common.jpa.entity"})
+@EnableJpaRepositories(basePackages = {"store.zabbix.toolscrudjpa.repository"})
 @RestController
-@SpringCloudApplication
+//@SpringCloudApplication
+@SpringBootApplication
 public class ToolsJpaExtraApplication extends SpringBootServletInitializer {
 
     @Override
@@ -41,19 +42,3 @@ public class ToolsJpaExtraApplication extends SpringBootServletInitializer {
     }
 
 }
-
-//@EntityScan(basePackages = {"store.zabbix.common.entity"})
-//@EnableJpaRepositories(basePackages = {"store.zabbix.toolscrudjpa"})
-//@RestController
-//@SpringBootApplication
-//public class ToolsJpaExtraApplication {
-//
-//    public static void main(String[] args) {
-//        SpringApplication.run(ToolsJpaExtraApplication.class, args);
-//    }
-//
-//    @RequestMapping("/")
-//    public String index() {
-//        return "Hello Docker!";
-//    }
-//}

@@ -2,7 +2,7 @@ package store.zabbix.toolsrouting.service;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
-import store.zabbix.common.entity.User;
+import store.zabbix.common.jpa.entity.User;
 
 import java.util.List;
 

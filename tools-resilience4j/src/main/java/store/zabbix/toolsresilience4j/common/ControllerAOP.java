@@ -7,7 +7,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 import store.zabbix.common.bean.ResultBean;
-import store.zabbix.common.exception.BusinessException;
+import store.zabbix.common.base.exception.BusinessException;
 
 import javax.naming.NoPermissionException;
 

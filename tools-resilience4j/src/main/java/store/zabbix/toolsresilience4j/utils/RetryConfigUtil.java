@@ -1,8 +1,8 @@
 package store.zabbix.toolsresilience4j.utils;
 
 import io.github.resilience4j.retry.RetryConfig;
-import store.zabbix.common.exception.RetryNeedException;
-import store.zabbix.common.exception.RetryNoNeedException;
+import store.zabbix.common.base.exception.RetryNeedException;
+import store.zabbix.common.base.exception.RetryNoNeedException;
 
 import java.time.Duration;
 
