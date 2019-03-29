@@ -4,10 +4,12 @@ plugins {
     id 'com.bmuschko.docker-spring-boot-application' version '4.6.2'
 }
 
+
 allprojects {
+
     apply plugin: 'java'
-    apply plugin: 'idea'
     apply plugin: 'org.springframework.boot'
+    apply plugin: 'idea'
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'com.bmuschko.docker-spring-boot-application'
 
@@ -61,18 +63,6 @@ allprojects {
         }
         dockerBuildImage {
             enabled = false
-        }
-    } else {
-        dockerSyncBuildContext {
-            doFirst {
-                if (project.name == 'tools-crud-jpa') {
-                    copy {
-                        println('copy--------------------------common')
-                        from('../tools-common/tools-common-jpa/build/classes/java/main/store/zabbix/common')
-                        into('./build/classes/java/main/store/zabbix/common')
-                    }
-                }
-            }
         }
     }
 }
