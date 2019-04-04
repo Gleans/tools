@@ -1,0 +1,18 @@
+dependencies {
+    //hutool
+    api "cn.hutool:hutool-all:${hutoolVersion}"
+    //redis
+    api "org.springframework.boot:spring-boot-starter-data-redis"
+    //server-api
+    api 'javax.servlet:javax.servlet-api'
+    //mybatis plus extension,包含了mybatis plus core
+    api "com.baomidou:mybatis-plus-extension:${mybatisPlusVersion}"
+    //feign 依赖
+    api 'io.github.openfeign:feign-okhttp'
+    api 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    //hibernate-validator
+    api "org.springframework.boot:spring-boot-starter-validation"
+
+    compileOnly "org.springframework.boot:spring-boot-configuration-processor"
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+}

@@ -1,9 +1,0 @@
-dependencies {
-    implementation "org.springframework.cloud:spring-cloud-starter-netflix-eureka-server"
-}
-docker {
-    springBootApplication {
-        baseImage = 'openjdk:8-alpine'
-        ports = [8761, 8761]
-    }
-}

@@ -1,0 +1,24 @@
+dependencies {
+    //安全模块
+//    implementation project(':tools-common:tools-common-security')
+////    implementation project(':tools-common:tools-common-core')
+//    //日志处理
+//    implementation project(':tools-common:tools-common-log')
+//    implementation project(':tools-common:tools-common-api')
+//    //配置中心客户端
+//    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+//    //数据库
+//    implementation "mysql:mysql-connector-java"
+//    //oauth2
+//    implementation 'org.springframework.cloud:spring-cloud-starter-oauth2'
+//    api "com.baomidou:mybatis-plus-extension:${mybatisPlusVersion}"
+
+//    implementation project(':tools-common:tools-common-api')
+//    annotationProcessor project(':tools-common:tools-common-api')
+    implementation project(':tools-common:tools-common-security')
+    implementation project(':tools-common:tools-common-log')
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    implementation "com.baomidou:mybatis-plus-boot-starter:${mybatisPlusVersion}"
+    implementation 'mysql:mysql-connector-java'
+//    implementation 'org.springframework.boot:spring-boot-starter-undertow'
+}

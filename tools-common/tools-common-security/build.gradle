@@ -1,0 +1,9 @@
+//pig 安全工具类
+dependencies {
+	//工具类核心包
+	api project(':tools-common:tools-common-core')
+	api project(':tools-common:tools-common-api')
+	//安全模块
+	api 'org.springframework.cloud:spring-cloud-starter-security'
+	api 'org.springframework.cloud:spring-cloud-starter-oauth2'
+}

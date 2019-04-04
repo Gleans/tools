@@ -1,7 +1,0 @@
-#spring:
-#  #采样率
-#  sleuth:
-#    sampler:
-#      probability: 1.0
-server:
-  port: 8900

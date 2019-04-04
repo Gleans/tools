@@ -7,23 +7,21 @@ plugins {
 
 allprojects {
 
-    apply plugin: 'java'
+    apply plugin: 'java-library'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'idea'
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'com.bmuschko.docker-spring-boot-application'
 
     ext {
-        toolsCommon = "tools-common"
-        toolsCommonJpa = "tools-common-jpa"
-        toolsCommonBase = "tools-common-base"
-        hostMachineIp = "springcloud-tools"
-        springBootVersion = "2.1.3.RELEASE"
-        springCloudVersion = "Greenwich.RELEASE"
+        hutoolVersion       = '4.5.0'
+        mybatisPlusVersion  = '3.1.0'
+        kaptchaVersion      = '0.0.9'
     }
 
     repositories {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url "https://repo.spring.io/libs-milestone/" }
         mavenCentral()
     }
 
@@ -33,26 +31,22 @@ allprojects {
     targetCompatibility = JavaVersion.VERSION_1_8
 
     dependencies {
-        implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+        implementation platform('org.springframework.cloud:spring-cloud-dependencies:Greenwich.RELEASE')
+        implementation platform('org.springframework.boot:spring-boot-dependencies:2.1.3.RELEASE')
+        implementation 'org.springframework.boot:spring-boot-starter-web'
         implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
         implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
-        implementation "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
+        implementation 'org.springframework.boot:spring-boot-starter-actuator'
         implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
-        //Gradle打包时使用lombok注解
-        compileOnly 'org.projectlombok:lombok:1.18.6'
+        api 'org.projectlombok:lombok:1.18.6'
         annotationProcessor 'org.projectlombok:lombok:1.18.6'
         implementation 'com.google.code.gson:gson:2.8.5'
         implementation 'com.alibaba:fastjson:1.2.56'
-        testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
-
+        implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:2.1.0'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
     }
 
-    dependencyManagement {
-        imports {
-            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-        }
-    }
-
+    //排除父项目打包docker
     if (project.subprojects) {
         jar.enabled = false
         bootJar {

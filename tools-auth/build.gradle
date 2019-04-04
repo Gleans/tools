@@ -1,0 +1,17 @@
+//通用用户权限管理聚合模块
+//认证授权中心，基于 spring security oAuth2
+dependencies {
+    //  配置中心客户端
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    //  auth api、model 模块
+//    implementation project(':tools-common:tools-common-api')
+    //  security
+    implementation project(':tools-common:tools-common-security')
+    //  JDBC相关
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    //  数据库
+    implementation 'mysql:mysql-connector-java'
+    //  undertow容器
+//    implementation "org.springframework.boot:spring-boot-starter-undertow"
+
+}

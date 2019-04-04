@@ -1,0 +1,10 @@
+dependencies {
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+    implementation 'org.springframework.cloud:spring-cloud-starter-oauth2'
+}
+docker {
+    springBootApplication {
+        baseImage = 'openjdk:8-alpine'
+        ports = [8761, 8761]
+    }
+}

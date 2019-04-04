@@ -1,5 +1,0 @@
-dependencies {
-    implementation 'org.springframework.cloud:spring-cloud-starter-config'
-    implementation "org.springframework.cloud:spring-cloud-bus"
-    implementation "org.springframework.cloud:spring-cloud-starter-bus-amqp"
-}

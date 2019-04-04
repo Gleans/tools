@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  store.zabbix.auth.api.feign.fallback.RemoteUserServiceFallbackImpl,\
+  store.zabbix.auth.api.feign.fallback.RemoteLogServiceFallbackImpl,\
+  store.zabbix.auth.api.feign.fallback.RemoteTokenServiceFallbackImpl,\
+  store.zabbix.auth.api.feign.factory.RemoteUserServiceFallbackFactory,\
+  store.zabbix.auth.api.feign.factory.RemoteLogServiceFallbackFactory,\
+  store.zabbix.auth.api.feign.factory.RemoteTokenServiceFallbackFactory

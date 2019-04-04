@@ -1,0 +1,21 @@
+# 此处密码加密放在了项目下，正式环境请把此文件放入私有仓库
+jasypt:
+  encryptor:
+    password: ZjE2MjFjZDAxOTI1NTAxMzEyNDNlZjgwOGJhZmQxOTc
+# Spring 相关
+spring:
+  redis:
+    password: pass1234
+    host: tools-redis
+  # zipkin
+  zipkin:
+    enabled: true
+    base-url: http://tools-zipkin
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      # 默认的采样比率为0.1，不能看到所有请求数据
+      # 更改采样比率为1，就能看到所有的请求数据了，但是这样会增加接口调用延迟
+      probability: 1.0

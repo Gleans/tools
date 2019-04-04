@@ -198,7 +198,7 @@ Step 5/7 : COPY classes classes/
 
 ---> Using cache
 ---> f14f221a9286
-Step 6/7 : ENTRYPOINT ["java", "-cp", "/app/resources:/app/classes:/app/libs/*", "store.zabbix.toolseureka.ToolsEurekaApplication"]
+Step 6/7 : ENTRYPOINT ["java", "-cp", "/app/resources:/app/classes:/app/libs/*", "store.zabbix.eureka.ToolsEurekaApplication"]
 
 ---> Using cache
 ---> 20cb31db5b91

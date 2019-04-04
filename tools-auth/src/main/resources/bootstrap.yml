@@ -1,0 +1,28 @@
+server:
+  port: 3000
+spring:
+  application:
+    name: tools-auth
+  profiles:
+    active: dev
+  cloud:
+    config:
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: tools-config
+  main:
+    allow-bean-definition-overriding: true
+  redis:
+    host: tools-redis
+    password: pass1234
+eureka:
+  instance:
+    hostname: tools-eureka
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://admin:admin@${eureka.instance.hostname}:8761/eureka/
