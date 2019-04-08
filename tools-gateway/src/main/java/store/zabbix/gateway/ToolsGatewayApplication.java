@@ -18,9 +18,7 @@ package store.zabbix.gateway;
 
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.client.SpringCloudApplication;
-import store.zabbix.common.core.config.FilterIgnorePropertiesConfig;
 
 /**
  * @author lengleng
@@ -28,7 +26,6 @@ import store.zabbix.common.core.config.FilterIgnorePropertiesConfig;
  * <p>
  * 网关应用
  */
-@EnableConfigurationProperties({ FilterIgnorePropertiesConfig.class })
 @SpringCloudApplication
 public class ToolsGatewayApplication {
 

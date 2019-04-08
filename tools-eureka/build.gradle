@@ -1,6 +1,18 @@
+//服务中心，基于eureka
 dependencies {
+    //  服务中心
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
-    implementation 'org.springframework.cloud:spring-cloud-starter-oauth2'
+    //  security
+    implementation 'org.springframework.cloud:spring-cloud-starter-security'
+    //  配置中心客户端
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    //  web 模块
+    implementation('org.springframework.boot:spring-boot-starter-web') {
+        //  排除tomcat依赖
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+    //  undertow容器
+    implementation 'org.springframework.boot:spring-boot-starter-undertow'
 }
 docker {
     springBootApplication {

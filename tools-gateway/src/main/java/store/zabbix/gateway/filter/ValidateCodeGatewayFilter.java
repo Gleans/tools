@@ -112,26 +112,26 @@ public class ValidateCodeGatewayFilter extends AbstractGatewayFilterFactory {
 		}
 
 		String key = CommonConstants.DEFAULT_CODE_KEY + randomStr;
-		if (!redisTemplate.hasKey(key)) {
-			throw new ValidateCodeException("验证码不合法");
-		}
-
-		Object codeObj = redisTemplate.opsForValue().get(key);
-
-		if (codeObj == null) {
-			throw new ValidateCodeException("验证码不合法");
-		}
-
-		String saveCode = codeObj.toString();
-		if (StrUtil.isBlank(saveCode)) {
-			redisTemplate.delete(key);
-			throw new ValidateCodeException("验证码不合法");
-		}
-
-		if (!StrUtil.equals(saveCode, code)) {
-			redisTemplate.delete(key);
-			throw new ValidateCodeException("验证码不合法");
-		}
+//		if (!redisTemplate.hasKey(key)) {
+//			throw new ValidateCodeException("验证码不合法");
+//		}
+//
+//		Object codeObj = redisTemplate.opsForValue().get(key);
+//
+//		if (codeObj == null) {
+//			throw new ValidateCodeException("验证码不合法");
+//		}
+//
+//		String saveCode = codeObj.toString();
+//		if (StrUtil.isBlank(saveCode)) {
+//			redisTemplate.delete(key);
+//			throw new ValidateCodeException("验证码不合法");
+//		}
+//
+//		if (!StrUtil.equals(saveCode, code)) {
+//			redisTemplate.delete(key);
+//			throw new ValidateCodeException("验证码不合法");
+//		}
 
 		redisTemplate.delete(key);
 	}

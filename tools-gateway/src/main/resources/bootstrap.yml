@@ -14,8 +14,8 @@ spring:
         service-id: tools-config
   profiles:
     active: dev
-
-# 注册中心
+  main:
+    allow-bean-definition-overriding: true
 eureka:
   instance:
     hostname: tools-eureka
@@ -54,3 +54,5 @@ eureka:
 # 所设置的值介于 0.0 到 1.0 之间，1.0 则表示全部采集
 
 # 水塘抽样(Reservoir Sampling) : https://www.cnblogs.com/strugglion/p/6424874.html
+
+

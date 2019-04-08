@@ -5,18 +5,18 @@ spring:
         enabled: true
       routes:
         # 认证中心
-        - id: tools-auth-service
-          uri: lb://tools-auth-service
+        - id: tools-auth
+          uri: lb://tools-auth
           predicates:
             - Path=/auth/**
           filters:
             # 验证码处理
-            - ValidateCodeGatewayFilter
+#            - ValidateCodeGatewayFilter
             # 前端密码解密
             - PasswordDecoderFilter
         #UPMS 模块
         - id: tools-auth
-          uri: lb://tools-auth
+          uri: lb://tools-admin
           predicates:
             - Path=/admin/**
           filters:
@@ -41,7 +41,7 @@ spring:
 security:
   encode:
     # 前端密码密钥，必须16位
-    key: 'thanks,pig4cloud'
+    key: '1234567812345678'
 
 # 不校验验证码终端
 ignore:

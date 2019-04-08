@@ -1,8 +1,8 @@
 security:
   oauth2:
     client:
-      client-id: client
-      client-secret: secret
+      client-id: admin
+      client-secret: admin
       scope: server
 
 # 数据源

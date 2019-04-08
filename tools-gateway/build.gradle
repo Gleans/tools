@@ -1,6 +1,4 @@
-configurations {
-    all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-web'
-}
+//  服务网关，基于 spring cloud gateway
 dependencies {
     //    gateway 网关依赖,内置webflux 依赖
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
@@ -10,9 +8,7 @@ dependencies {
     // 验证码
     implementation "com.github.axet:kaptcha:${kaptchaVersion}"
     //common-core
-    implementation project(':tools-common:tools-common-core')
-    //hutool
-    implementation "cn.hutool:hutool-all:${hutoolVersion}"
-    //webflux
-    implementation "org.springframework.boot:spring-boot-starter-webflux"
+    compile(project(':tools-common:tools-common-core')){
+        transitive = true
+    }
 }

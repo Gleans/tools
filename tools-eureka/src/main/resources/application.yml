@@ -7,19 +7,21 @@ spring:
     user:
       name: admin
       password: admin
+  cloud:
+    config:
+      enabled: false
 eureka:
   instance:
     hostname: tools-eureka
     prefer-ip-address: true
     instance-id: ${eureka.instance.hostname}:${server.port}
-#    instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
-    #值为false意味着自身仅作为服务器，不作为客户端
+    # 意味着自身仅作为服务器，不作为客户端
     register-with-eureka: false
     # 无需注册自身
     fetch-registry: false
     service-url:
-      defaultZone: http://admin:admin@${eureka.instance.hostname}:8762/eureka/
+      defaultZone: http://admin:admin@${eureka.instance.hostname}:8761/eureka/
   # 更改Eureka更新频率将打破服务器的自我保护功能，生产环境下不建议自定义这些配置
   server:
     # 清理间隔（单位毫秒，默认是60*1000）

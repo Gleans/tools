@@ -16,8 +16,6 @@
 
 package store.zabbix.gateway.config;
 
-import store.zabbix.gateway.handler.HystrixFallbackHandler;
-import store.zabbix.gateway.handler.ImageCodeHandler;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -26,6 +24,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.server.RequestPredicates;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
+import store.zabbix.gateway.handler.HystrixFallbackHandler;
+import store.zabbix.gateway.handler.ImageCodeHandler;
 
 /**
  * @author lengleng
