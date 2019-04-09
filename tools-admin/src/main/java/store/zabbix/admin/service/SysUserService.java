@@ -19,11 +19,11 @@ package store.zabbix.admin.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import store.zabbix.auth.api.dto.UserDTO;
-import store.zabbix.auth.api.dto.UserInfo;
-import store.zabbix.auth.api.entity.SysUser;
-import store.zabbix.auth.api.vo.UserVO;
-import store.zabbix.common.core.util.ResultBean;;
+import store.zabbix.common.api.dto.UserDTO;
+import store.zabbix.common.api.dto.UserInfo;
+import store.zabbix.common.api.entity.SysUser;
+import store.zabbix.common.api.vo.UserVO;
+import store.zabbix.common.core.util.ResultBean;
 
 import java.util.List;
 

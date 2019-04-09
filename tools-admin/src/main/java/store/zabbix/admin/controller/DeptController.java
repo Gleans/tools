@@ -15,10 +15,9 @@
  */
 package store.zabbix.admin.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import store.zabbix.common.api.entity.SysDept;
 import store.zabbix.admin.service.SysDeptService;
-import store.zabbix.auth.api.entity.SysDept;
-import store.zabbix.common.core.util.ResultBean;;
+import store.zabbix.common.core.util.ResultBean;
 import store.zabbix.common.log.annotation.SysLog;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -36,11 +35,10 @@ import java.time.LocalDateTime;
  * @since 2019/2/1
  */
 @RestController
+@AllArgsConstructor
 @RequestMapping("/dept")
 public class DeptController {
-
-	@Autowired
-	private SysDeptService sysDeptService;
+	private final SysDeptService sysDeptService;
 
 	/**
 	 * 通过ID查询

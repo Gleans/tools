@@ -18,9 +18,9 @@ package store.zabbix.admin.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import store.zabbix.auth.api.entity.SysMenu;
-import store.zabbix.auth.api.vo.MenuVO;
-import store.zabbix.common.core.util.ResultBean;;
+import store.zabbix.common.api.entity.SysMenu;
+import store.zabbix.common.api.vo.MenuVO;
+import store.zabbix.common.core.util.ResultBean;
 
 import java.util.List;
 

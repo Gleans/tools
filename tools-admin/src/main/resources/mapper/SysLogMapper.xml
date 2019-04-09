@@ -20,7 +20,7 @@
 
 <mapper namespace="store.zabbix.admin.mapper.SysLogMapper">
 
-	<resultMap id="sysLogMap" type="SysLog">
+	<resultMap id="sysLogMap" type="store.zabbix.common.api.entity.SysLog">
 		<id property="id" column="id"/>
 		<result property="type" column="type"/>
 		<result property="title" column="title"/>

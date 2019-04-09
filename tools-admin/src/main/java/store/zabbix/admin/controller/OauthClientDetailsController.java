@@ -18,10 +18,9 @@ package store.zabbix.admin.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.springframework.beans.factory.annotation.Autowired;
-import store.zabbix.auth.api.entity.SysOauthClientDetails;
+import store.zabbix.common.api.entity.SysOauthClientDetails;
 import store.zabbix.admin.service.SysOauthClientDetailsService;
-import store.zabbix.common.core.util.ResultBean;;
+import store.zabbix.common.core.util.ResultBean;
 import store.zabbix.common.log.annotation.SysLog;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -38,72 +37,71 @@ import javax.validation.Valid;
  * @since 2018-05-15
  */
 @RestController
+@AllArgsConstructor
 @RequestMapping("/client")
 public class OauthClientDetailsController {
+	private final SysOauthClientDetailsService sysOauthClientDetailsService;
 
-    @Autowired
-    private SysOauthClientDetailsService sysOauthClientDetailsService;
-
-    /**
-     * 通过ID查询
-     *
-     * @param id ID
-     * @return SysOauthClientDetails
-     */
-    @GetMapping("/{id}")
-    public ResultBean getById(@PathVariable Integer id) {
-        return new ResultBean<>(sysOauthClientDetailsService.getById(id));
-    }
+	/**
+	 * 通过ID查询
+	 *
+	 * @param id ID
+	 * @return SysOauthClientDetails
+	 */
+	@GetMapping("/{id}")
+	public ResultBean getById(@PathVariable Integer id) {
+		return new ResultBean<>(sysOauthClientDetailsService.getById(id));
+	}
 
 
-    /**
-     * 简单分页查询
-     *
-     * @param page                  分页对象
-     * @param sysOauthClientDetails 系统终端
-     * @return
-     */
-    @GetMapping("/page")
-    public ResultBean getOauthClientDetailsPage(Page page, SysOauthClientDetails sysOauthClientDetails) {
-        return new ResultBean<>(sysOauthClientDetailsService.page(page, Wrappers.query(sysOauthClientDetails)));
-    }
+	/**
+	 * 简单分页查询
+	 *
+	 * @param page                  分页对象
+	 * @param sysOauthClientDetails 系统终端
+	 * @return
+	 */
+	@GetMapping("/page")
+	public ResultBean getOauthClientDetailsPage(Page page, SysOauthClientDetails sysOauthClientDetails) {
+		return new ResultBean<>(sysOauthClientDetailsService.page(page, Wrappers.query(sysOauthClientDetails)));
+	}
 
-    /**
-     * 添加
-     *
-     * @param sysOauthClientDetails 实体
-     * @return success/false
-     */
-    @SysLog("添加终端")
-    @PostMapping
-    @PreAuthorize("@pms.hasPermission('sys_client_add')")
-    public ResultBean add(@Valid @RequestBody SysOauthClientDetails sysOauthClientDetails) {
-        return new ResultBean<>(sysOauthClientDetailsService.save(sysOauthClientDetails));
-    }
+	/**
+	 * 添加
+	 *
+	 * @param sysOauthClientDetails 实体
+	 * @return success/false
+	 */
+	@SysLog("添加终端")
+	@PostMapping
+	@PreAuthorize("@pms.hasPermission('sys_client_add')")
+	public ResultBean add(@Valid @RequestBody SysOauthClientDetails sysOauthClientDetails) {
+		return new ResultBean<>(sysOauthClientDetailsService.save(sysOauthClientDetails));
+	}
 
-    /**
-     * 删除
-     *
-     * @param id ID
-     * @return success/false
-     */
-    @SysLog("删除终端")
-    @DeleteMapping("/{id}")
-    @PreAuthorize("@pms.hasPermission('sys_client_del')")
-    public ResultBean removeById(@PathVariable String id) {
-        return new ResultBean<>(sysOauthClientDetailsService.removeClientDetailsById(id));
-    }
+	/**
+	 * 删除
+	 *
+	 * @param id ID
+	 * @return success/false
+	 */
+	@SysLog("删除终端")
+	@DeleteMapping("/{id}")
+	@PreAuthorize("@pms.hasPermission('sys_client_del')")
+	public ResultBean removeById(@PathVariable String id) {
+		return new ResultBean<>(sysOauthClientDetailsService.removeClientDetailsById(id));
+	}
 
-    /**
-     * 编辑
-     *
-     * @param sysOauthClientDetails 实体
-     * @return success/false
-     */
-    @SysLog("编辑终端")
-    @PutMapping
-    @PreAuthorize("@pms.hasPermission('sys_client_edit')")
-    public ResultBean update(@Valid @RequestBody SysOauthClientDetails sysOauthClientDetails) {
-        return new ResultBean<>(sysOauthClientDetailsService.updateClientDetailsById(sysOauthClientDetails));
-    }
+	/**
+	 * 编辑
+	 *
+	 * @param sysOauthClientDetails 实体
+	 * @return success/false
+	 */
+	@SysLog("编辑终端")
+	@PutMapping
+	@PreAuthorize("@pms.hasPermission('sys_client_edit')")
+	public ResultBean update(@Valid @RequestBody SysOauthClientDetails sysOauthClientDetails) {
+		return new ResultBean<>(sysOauthClientDetailsService.updateClientDetailsById(sysOauthClientDetails));
+	}
 }

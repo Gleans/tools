@@ -17,8 +17,8 @@
 package store.zabbix.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import store.zabbix.auth.api.entity.SysMenu;
-import store.zabbix.auth.api.vo.MenuVO;
+import store.zabbix.common.api.entity.SysMenu;
+import store.zabbix.common.api.vo.MenuVO;
 
 import java.util.List;
 

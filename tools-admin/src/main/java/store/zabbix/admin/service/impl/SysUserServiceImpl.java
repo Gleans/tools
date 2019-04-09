@@ -22,27 +22,24 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import store.zabbix.admin.mapper.SysUserMapper;
-import store.zabbix.admin.service.SysMenuService;
-import store.zabbix.admin.service.SysUserService;
-import store.zabbix.auth.api.dto.UserDTO;
-import store.zabbix.auth.api.dto.UserInfo;
-import store.zabbix.auth.api.entity.*;
-import store.zabbix.auth.api.vo.MenuVO;
-import store.zabbix.auth.api.vo.UserVO;
-import store.zabbix.admin.mapper.SysUserMapper;
 import store.zabbix.admin.service.*;
+import store.zabbix.common.api.dto.UserDTO;
+import store.zabbix.common.api.dto.UserInfo;
+import store.zabbix.common.api.entity.*;
+import store.zabbix.common.api.vo.MenuVO;
+import store.zabbix.common.api.vo.UserVO;
 import store.zabbix.common.core.constant.CommonConstants;
 import store.zabbix.common.core.util.ResultBean;
+import store.zabbix.admin.mapper.SysUserMapper;
 import store.zabbix.common.security.util.SecurityUtils;
 
 import java.time.LocalDateTime;
@@ -51,22 +48,24 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-;
-
 /**
  * @author lengleng
  * @date 2019/2/1
  */
 @Slf4j
 @Service
-@AllArgsConstructor
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
 	private static final PasswordEncoder ENCODER = new BCryptPasswordEncoder();
-	private final SysMenuService sysMenuService;
-	private final SysRoleService sysRoleService;
-	private final SysDeptService sysDeptService;
-	private final SysUserRoleService sysUserRoleService;
-	private final SysDeptRelationService sysDeptRelationService;
+	@Autowired
+	private SysMenuService sysMenuService;
+	@Autowired
+	private SysRoleService sysRoleService;
+	@Autowired
+	private SysDeptService sysDeptService;
+	@Autowired
+	private SysUserRoleService sysUserRoleService;
+	@Autowired
+	private SysDeptRelationService sysDeptRelationService;
 
 	/**
 	 * 保存用户信息

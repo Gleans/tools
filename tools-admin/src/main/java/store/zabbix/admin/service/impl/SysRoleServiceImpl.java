@@ -18,10 +18,10 @@ package store.zabbix.admin.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import store.zabbix.common.api.entity.SysRole;
+import store.zabbix.common.api.entity.SysRoleMenu;
 import store.zabbix.admin.mapper.SysRoleMapper;
 import store.zabbix.admin.mapper.SysRoleMenuMapper;
-import store.zabbix.auth.api.entity.SysRole;
-import store.zabbix.auth.api.entity.SysRoleMenu;
 import store.zabbix.admin.service.SysRoleService;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;

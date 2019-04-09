@@ -17,81 +17,35 @@ sudo vim /etc/hosts
 add 
 
 ```
-127.0.0.1 springcloud-tools
+127.0.0.1 tools
 ```
-
 At last,:wq save this file.
 
+### 项目结构
 
 ```
-├─springcloud-tools----------------------------父项目，公共依赖
+├─tools----------------------------父项目/公共依赖管理
 │  │
-│  ├─tools-eureka-server---------------------------微服务注册中心[8761,8762]
+│  ├─tools-eureka---------------------------注册中心[8761,8762]
 │  │
-│  ├─tools-config-server---------------------------微服务配置中心
+│  ├─tools-config---------------------------配置中心[7001,7002]
 │  │
-│  ├─tools-monitor---------------------------------微服务监控中心
+│  ├─tools-gateway--------------------------网关中心[9999]
 │  │
-│  ├─tools-zipkin-server---------------------------微服务日志采集中心
+│  ├─tools-auth-----------------------------认证授权中心[3000]
 │  │
-│  ├─tools-gateway---------------------------------微服务网关中心
-│  │
-│  ├─tools-provider
-│  │  │
-│  │  ├─tools-provider-mdc------------------数据服务中心
-│  │  │
-│  │  ├─tools-provider-omc------------------订单服务中心
-│  │  │
-│  │  ├─tools-provider-opc------------------对接服务中心
-│  │  │
-│  │  ├─tools-provider-tpc------------------任务服务中心
-│  │  │
-│  │  └─tools-provider-uac------------------用户服务中心
-│  │
-│  ├─tools-provider-api
-│  │  │
-│  │  ├─tools-provider-mdc-api------------------数据服务中心API
-│  │  │
-│  │  ├─tools-provider-omc-api------------------订单服务中心API
-│  │  │
-│  │  ├─tools-provider-opc-api------------------对接服务中心API
-│  │  │
-│  │  ├─tools-provider-tpc-api------------------任务服务中心API
-│  │  │
-│  │  ├─tools-provider-sdk-api------------------可靠消息服务API
-│  │  │
-│  │  └─tools-provider-uac-api------------------用户服务中心API
+│  ├─tools-admin----------------------------权限管理系统业务处理模块[4000]
 │  │
 │  ├─tools-common
 │  │  │
-│  │  ├─tools-common-base------------------公共POJO基础包
+│  │  ├─tools-common-api--------------------通用用户权限管理系统公共api模块
 │  │  │
-│  │  ├─tools-common-config------------------公共配置包
+│  │  ├─tools-common-core-------------------公共工具类核心包
 │  │  │
-│  │  ├─tools-common-core------------------微服务核心依赖包
+│  │  ├─tools-common-log--------------------日志服务
 │  │  │
-│  │  ├─tools-common-util------------------公共工具包
-│  │  │
-│  │  ├─tools-common-zk------------------zookeeper配置
-│  │  │
-│  │  ├─tools-security-app------------------公共无状态安全认证
-│  │  │
-│  │  ├─tools-security-core------------------安全服务核心包
-│  │  │
-│  │  └─tools-security-feign------------------基于auth2的feign配置
-│  │
-│  ├─tools-generator
-│  │  │ 
-│  │  ├─tools-generator-mdc------------------数据服务中心Mybatis Generator
-│  │  │
-│  │  ├─tools-generator-omc------------------数据服务中心Mybatis Generator
-│  │  │
-│  │  ├─tools-generator-opc------------------数据服务中心Mybatis Generator
-│  │  │
-│  │  ├─tools-generator-tpc------------------数据服务中心Mybatis Generator
-│  │  │
-│  │  └─tools-generator-uac------------------数据服务中心Mybatis Generator
-
+│  │  └─tools-common-security---------------安全工具类
+└─ └─
 ```
 
 ### 3.Project Building
@@ -108,7 +62,7 @@ gradle clean
 result:  
 
 ```
-# cuifuan @ cuifuandeMacBook-Pro in ~/workspaces/springcloud-tools on git:master o [11:30:14]
+# cuifuan @ cuifuandeMacBook-Pro in ~/workspaces/tools on git:master o [11:30:14]
 $ gradle clean
 
 Deprecated Gradle features were used in this build, making it incompatible with Gradle 6.0.
@@ -122,7 +76,7 @@ BUILD SUCCESSFUL in 0s
 ###### 3.2 Gradle dockerSyncBuildContext
 
 ```shell
-# cuifuan @ cuifuandeMacBook-Pro in ~/workspaces/springcloud-tools on git:master x [11:35:18]
+# cuifuan @ cuifuandeMacBook-Pro in ~/workspaces/tools on git:master x [11:35:18]
 $ gradle dockerSyncBuildContext
 
 Deprecated Gradle features were used in this build, making it incompatible with Gradle 6.0.
@@ -136,11 +90,11 @@ BUILD SUCCESSFUL in 9s
 ###### 3.3 Gradle dockerSyncBuildContext
 
 ```shell
-# cuifuan @ cuifuandeMacBook-Pro in ~/workspaces/springcloud-tools on git:master x [11:36:47]
+# cuifuan @ cuifuandeMacBook-Pro in ~/workspaces/tools on git:master x [11:36:47]
 $ gradle dockerBuildImage
 
 > Task :tools-crud-jpa:dockerBuildImage
-Building image using context '/Users/cuifuan/workspaces/springcloud-tools/tools-crud-jpa/build/docker'.
+Building image using context '/Users/cuifuan/workspaces/tools/tools-crud-jpa/build/docker'.
 Using tags 'store.zabbix/tools-crud-jpa:1.0' for image.
 
 Step 1/7 : FROM openjdk:8-alpine
@@ -176,7 +130,7 @@ Successfully tagged store.zabbix/tools-crud-jpa:1.0
 Created image with ID '7c88767b64f9'.
 
 > Task :tools-eureka-server:dockerBuildImage
-Building image using context '/Users/cuifuan/workspaces/springcloud-tools/tools-eureka-server/build/docker'.
+Building image using context '/Users/cuifuan/workspaces/tools/tools-eureka-server/build/docker'.
 Using tags 'store.zabbix/tools-eureka-server:1.0' for image.
 
 Step 1/7 : FROM openjdk:8-alpine
@@ -224,7 +178,7 @@ BUILD SUCCESSFUL in 12s
 
 ###### 4.1 View Docker images
 ```shell
-# cuifuan @ cuifuandeMacBook-Pro in ~/workspaces/springcloud-tools on git:master x [11:37:46]
+# cuifuan @ cuifuandeMacBook-Pro in ~/workspaces/tools on git:master x [11:37:46]
 $ docker images
 REPOSITORY                         TAG                 IMAGE ID            CREATED              SIZE
 store.zabbix/tools-crud-jpa        1.0                 7c88767b64f9        About a minute ago   167MB
@@ -239,20 +193,20 @@ openjdk                            8-alpine            e9ea51023687        3 wee
 > -d make docker images in the background
 
 ###### 4.3 Run eureka-server
-> docker run -d --network springcloud-tools -p 8761:8761 store.zabbix/tools-eureka-server:1.0
+> docker run -d --network tools -p 8761:8761 store.zabbix/tools-eureka-server:1.0
 ```shell
-# cuifuan @ cuifuandeMacBook-Pro in ~/workspaces/springcloud-tools on git:master x [11:39:02]
-$ docker run -d --network springcloud-tools -p 8761:8761 store.zabbix/tools-eureka-server:1.0
+# cuifuan @ cuifuandeMacBook-Pro in ~/workspaces/tools on git:master x [11:39:02]
+$ docker run -d --network tools -p 8761:8761 store.zabbix/tools-eureka-server:1.0
 41ca14f89cd81bf4560254647d1763db7b6853b166c74f359bd8d794e5e48f9c
 ```
 
 ###### 4.4 Run eureka client
 
-> docker run -d --network springcloud-tools -p 8769:8769 store.zabbix/tools-crud-jpa:1.0
+> docker run -d --network tools -p 8769:8769 store.zabbix/tools-crud-jpa:1.0
 
 ```shell
-# cuifuan @ cuifuandeMacBook-Pro in ~/workspaces/springcloud-tools on git:master x [11:43:03]
-$ docker run -d --network springcloud-tools -p 8769:8769 store.zabbix/tools-crud-jpa:1.0
+# cuifuan @ cuifuandeMacBook-Pro in ~/workspaces/tools on git:master x [11:43:03]
+$ docker run -d --network tools -p 8769:8769 store.zabbix/tools-crud-jpa:1.0
 aa845590b74adfa8b725b0eb44020f3b02a1520ec9e802d6cc5bab7e40e0d6dd
 ```
 

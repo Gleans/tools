@@ -1,18 +1,22 @@
+//  公共工具类核心包
 dependencies {
-    //hutool
+    //  hutool
     api "cn.hutool:hutool-all:${hutoolVersion}"
-    //redis
+    //  redis
     api "org.springframework.boot:spring-boot-starter-data-redis"
-    //server-api
+    //  server-api
     api 'javax.servlet:javax.servlet-api'
-    //mybatis plus extension,包含了mybatis plus core
+    //  mybatis plus extension,包含了mybatis plus core
     api "com.baomidou:mybatis-plus-extension:${mybatisPlusVersion}"
-    //feign 依赖
+    //  feign 依赖
     api 'io.github.openfeign:feign-okhttp'
     api 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    //hibernate-validator
+    //  hibernate-validator
     api "org.springframework.boot:spring-boot-starter-validation"
-
-    compileOnly "org.springframework.boot:spring-boot-configuration-processor"
-    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    //  jackson模块
+    api "com.fasterxml.jackson.module:jackson-module-parameter-names"
+    api "com.fasterxml.jackson.datatype:jackson-datatype-jdk8"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+//    compileOnly "org.springframework.boot:spring-boot-configuration-processor"
+//    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 }

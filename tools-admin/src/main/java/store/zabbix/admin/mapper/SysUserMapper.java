@@ -19,9 +19,9 @@ package store.zabbix.admin.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import store.zabbix.auth.api.dto.UserDTO;
-import store.zabbix.auth.api.entity.SysUser;
-import store.zabbix.auth.api.vo.UserVO;
+import store.zabbix.common.api.dto.UserDTO;
+import store.zabbix.common.api.entity.SysUser;
+import store.zabbix.common.api.vo.UserVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

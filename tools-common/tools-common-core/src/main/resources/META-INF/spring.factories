@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  store.zabbix.common.core.config.JacksonConfig,\
+  store.zabbix.common.core.config.RedisConfig,\
+  store.zabbix.common.core.config.RestTemplateConfig,\
+  store.zabbix.common.core.config.FilterIgnorePropertiesConfig,\
+  store.zabbix.common.core.exception.GlobalExceptionHandler,\
+  store.zabbix.common.core.util.SpringContextHolder

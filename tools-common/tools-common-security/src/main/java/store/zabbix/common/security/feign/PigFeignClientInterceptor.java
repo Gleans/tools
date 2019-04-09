@@ -17,13 +17,13 @@
 package store.zabbix.common.security.feign;
 
 import cn.hutool.core.collection.CollUtil;
+import store.zabbix.common.core.constant.SecurityConstants;
 import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.security.oauth2.client.AccessTokenContextRelay;
 import org.springframework.cloud.security.oauth2.client.feign.OAuth2FeignRequestInterceptor;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
-import store.zabbix.common.core.constant.SecurityConstants;
 
 import java.util.Collection;
 

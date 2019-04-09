@@ -17,8 +17,8 @@
 package store.zabbix.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import store.zabbix.common.api.entity.SysUserRole;
 import store.zabbix.admin.mapper.SysUserRoleMapper;
-import store.zabbix.auth.api.entity.SysUserRole;
 import store.zabbix.admin.service.SysUserRoleService;
 import org.springframework.stereotype.Service;
 

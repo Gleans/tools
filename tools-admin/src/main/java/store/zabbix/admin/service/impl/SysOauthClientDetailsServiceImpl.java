@@ -17,8 +17,8 @@
 package store.zabbix.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import store.zabbix.common.api.entity.SysOauthClientDetails;
 import store.zabbix.admin.mapper.SysOauthClientDetailsMapper;
-import store.zabbix.auth.api.entity.SysOauthClientDetails;
 import store.zabbix.admin.service.SysOauthClientDetailsService;
 import store.zabbix.common.core.constant.SecurityConstants;
 import org.springframework.cache.annotation.CacheEvict;

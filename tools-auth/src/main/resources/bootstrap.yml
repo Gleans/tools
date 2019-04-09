@@ -15,9 +15,6 @@ spring:
         service-id: tools-config
   main:
     allow-bean-definition-overriding: true
-  redis:
-    host: tools-redis
-    password: pass1234
 eureka:
   instance:
     hostname: tools-eureka

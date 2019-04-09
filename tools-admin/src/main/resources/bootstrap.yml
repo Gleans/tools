@@ -27,9 +27,9 @@ eureka:
       defaultZone: http://admin:admin@${eureka.instance.hostname}:8761/eureka/
 #mybatis
 mybatis-plus:
-  mapper-locations: classpath*:mapper/**Mapper.xml
+#  mapper-locations: classpath*:mapper/**Mapper.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: store.zabbix.auth.api.entity,store.zabbix.auth.api.vo
+  typeAliasesPackage: store.zabbix.common.api.entity,store.zabbix.common.api.vo
   global-config:
     #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
     id-type: 2

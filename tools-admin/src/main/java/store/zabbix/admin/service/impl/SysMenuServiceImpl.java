@@ -19,16 +19,14 @@ package store.zabbix.admin.service.impl;
 import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import store.zabbix.admin.mapper.SysMenuMapper;
-import store.zabbix.admin.mapper.SysRoleMenuMapper;
-import store.zabbix.auth.api.entity.SysMenu;
-import store.zabbix.auth.api.entity.SysRoleMenu;
-import store.zabbix.auth.api.vo.MenuVO;
+import store.zabbix.common.api.entity.SysMenu;
+import store.zabbix.common.api.entity.SysRoleMenu;
+import store.zabbix.common.api.vo.MenuVO;
 import store.zabbix.admin.mapper.SysMenuMapper;
 import store.zabbix.admin.mapper.SysRoleMenuMapper;
 import store.zabbix.admin.service.SysMenuService;
 import store.zabbix.common.core.constant.CommonConstants;
-import store.zabbix.common.core.util.ResultBean;;
+import store.zabbix.common.core.util.ResultBean;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -74,7 +72,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 				.lambda().eq(SysRoleMenu::getMenuId, id));
 
 		//删除当前菜单及其子菜单
-		return new ResultBean<>(this.removeById(id));
+		return new ResultBean(this.removeById(id));
 	}
 
 	@Override

@@ -18,7 +18,7 @@ package store.zabbix.admin.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import store.zabbix.auth.api.entity.SysUserRole;
+import store.zabbix.common.api.entity.SysUserRole;
 import org.apache.ibatis.annotations.Param;
 
 /**

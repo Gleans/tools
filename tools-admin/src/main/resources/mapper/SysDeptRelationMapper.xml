@@ -19,7 +19,7 @@
 <mapper namespace="store.zabbix.admin.mapper.SysDeptRelationMapper">
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="SysDeptRelation">
+	<resultMap id="BaseResultMap" type="store.zabbix.common.api.entity.SysDeptRelation">
 		<id column="ancestor" property="ancestor"/>
 		<result column="descendant" property="descendant"/>
 	</resultMap>

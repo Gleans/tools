@@ -23,7 +23,7 @@ package store.zabbix.common.core.constant;
  */
 public interface ServiceNameConstants {
 	/**
-	 * 认证服务的SERVICEID（zuul 配置的对应）
+	 * 认证服务的SERVICEID
 	 */
 	String AUTH_SERVICE = "tools-auth";
 

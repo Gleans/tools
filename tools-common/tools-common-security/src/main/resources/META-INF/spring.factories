@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  store.zabbix.common.security.service.ToolsUserDetailsServiceImpl
+  store.zabbix.common.security.service.PigUserDetailsServiceImpl

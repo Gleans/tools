@@ -17,8 +17,7 @@
 package store.zabbix.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.mybatis.spring.annotation.MapperScan;
-import store.zabbix.auth.api.entity.SysDeptRelation;
+import store.zabbix.common.api.entity.SysDeptRelation;
 
 /**
  * <p>

@@ -19,7 +19,7 @@
 <mapper namespace="store.zabbix.admin.mapper.SysUserRoleMapper">
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="SysUserRole">
+	<resultMap id="BaseResultMap" type="store.zabbix.common.api.entity.SysUserRole">
 		<id column="user_id" property="userId"/>
 		<result column="role_id" property="roleId"/>
 	</resultMap>

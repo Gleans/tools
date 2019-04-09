@@ -19,10 +19,9 @@ package store.zabbix.admin.service.impl;
 import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import store.zabbix.common.api.entity.SysDept;
+import store.zabbix.common.api.entity.SysDeptRelation;
 import store.zabbix.admin.mapper.SysDeptRelationMapper;
-import store.zabbix.auth.api.entity.SysDept;
-import store.zabbix.auth.api.entity.SysDeptRelation;
 import store.zabbix.admin.service.SysDeptRelationService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -40,10 +39,9 @@ import java.util.stream.Collectors;
  * @since 2019/2/1
  */
 @Service
+@AllArgsConstructor
 public class SysDeptRelationServiceImpl extends ServiceImpl<SysDeptRelationMapper, SysDeptRelation> implements SysDeptRelationService {
-
-	@Autowired
-	private SysDeptRelationMapper sysDeptRelationMapper;
+	private final SysDeptRelationMapper sysDeptRelationMapper;
 
 	/**
 	 * 维护部门关系

@@ -18,15 +18,10 @@ package store.zabbix.admin;
 
 
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import store.zabbix.common.security.annotation.EnableToolsFeignClients;
-import store.zabbix.common.security.annotation.EnableToolsResourceServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
+import store.zabbix.common.security.annotation.EnablePigFeignClients;
+import store.zabbix.common.security.annotation.EnablePigResourceServer;
 
 /**
  * @author lengleng
@@ -36,12 +31,16 @@ import org.springframework.cloud.client.SpringCloudApplication;
 //@EnableFeignClients
 //@EnableEurekaClient
 //@EnableCircuitBreaker
-//@SpringBootApplication(scanBasePackages = {"store.zabbix.admin.service","store.zabbix.admin.controller","store.zabbix.admin.config","store.zabbix.auth.api"})
-@EnableFeignClients
+//@SpringBootApplication(scanBasePackages = {"store.zabbix.admin.service","store.zabbix.common.controller","store.zabbix.common.config","store.zabbix.auth.api"})
+//@EnableFeignClients
+//@MapperScan("store.zabbix.common.mapper")
+//@SpringBootApplication(scanBasePackages = {"store.zabbix"})
+//@EnableDiscoveryClient
+//@EnableCircuitBreaker
+@EnablePigResourceServer
+@EnablePigFeignClients
 @MapperScan("store.zabbix.admin.mapper")
-@SpringBootApplication(scanBasePackages = {"store.zabbix"})
-@EnableDiscoveryClient
-@EnableCircuitBreaker
+@SpringCloudApplication
 public class ToolsAdminApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ToolsAdminApplication.class, args);

@@ -17,7 +17,7 @@
 package store.zabbix.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import store.zabbix.auth.api.entity.SysDept;
+import store.zabbix.common.api.entity.SysDept;
 
 import java.util.List;
 

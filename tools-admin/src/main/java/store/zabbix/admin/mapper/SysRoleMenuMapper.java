@@ -18,7 +18,7 @@ package store.zabbix.admin.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import store.zabbix.auth.api.entity.SysRoleMenu;
+import store.zabbix.common.api.entity.SysRoleMenu;
 
 /**
  * <p>

@@ -16,10 +16,9 @@
 
 package store.zabbix.admin.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import store.zabbix.auth.api.feign.RemoteTokenService;
+import store.zabbix.common.api.feign.RemoteTokenService;
 import store.zabbix.common.core.constant.SecurityConstants;
-import store.zabbix.common.core.util.ResultBean;;
+import store.zabbix.common.core.util.ResultBean;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -32,11 +31,10 @@ import java.util.Map;
  * getTokenPage 管理
  */
 @RestController
+@AllArgsConstructor
 @RequestMapping("/token")
 public class TokenController {
-
-	@Autowired
-	private RemoteTokenService remoteTokenService;
+	private final RemoteTokenService remoteTokenService;
 
 	/**
 	 * 分页token 信息

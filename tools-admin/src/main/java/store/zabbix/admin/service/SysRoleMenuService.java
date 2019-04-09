@@ -18,7 +18,7 @@ package store.zabbix.admin.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import store.zabbix.auth.api.entity.SysRoleMenu;
+import store.zabbix.common.api.entity.SysRoleMenu;
 
 /**
  * <p>

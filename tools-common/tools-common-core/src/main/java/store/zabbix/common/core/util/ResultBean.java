@@ -27,39 +27,46 @@ import java.io.Serializable;
  * 响应信息主体
  *
  * @param <T>
- * @author 晓风轻
+ * @author lengleng
  */
-@Data
 @Builder
+@ToString
 @Accessors(chain = true)
 @AllArgsConstructor
 public class ResultBean<T> implements Serializable {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private int code = CommonConstants.SUCCESS;
+	@Getter
+	@Setter
+	private int code = CommonConstants.SUCCESS;
 
-    private String msg = "success";
+	@Getter
+	@Setter
+	private String msg = "success";
 
-    private T data;
 
-    public ResultBean() {
-        super();
-    }
+	@Getter
+	@Setter
+	private T data;
 
-    public ResultBean(T data) {
-        super();
-        this.data = data;
-    }
+	public ResultBean() {
+		super();
+	}
 
-    public ResultBean(T data, String msg) {
-        super();
-        this.data = data;
-        this.msg = msg;
-    }
+	public ResultBean(T data) {
+		super();
+		this.data = data;
+	}
 
-    public ResultBean(Throwable e) {
-        super();
-        this.msg = e.getMessage();
-        this.code = CommonConstants.FAIL;
-    }
+	public ResultBean(T data, String msg) {
+		super();
+		this.data = data;
+		this.msg = msg;
+	}
+
+	public ResultBean(Throwable e) {
+		super();
+		this.msg = e.getMessage();
+		this.code = CommonConstants.FAIL;
+	}
 }

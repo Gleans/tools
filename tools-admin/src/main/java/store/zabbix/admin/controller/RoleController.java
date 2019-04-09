@@ -18,11 +18,10 @@ package store.zabbix.admin.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.springframework.beans.factory.annotation.Autowired;
-import store.zabbix.auth.api.entity.SysRole;
+import store.zabbix.common.api.entity.SysRole;
 import store.zabbix.admin.service.SysRoleMenuService;
 import store.zabbix.admin.service.SysRoleService;
-import store.zabbix.common.core.util.ResultBean;;
+import store.zabbix.common.core.util.ResultBean;
 import store.zabbix.common.log.annotation.SysLog;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -35,13 +34,11 @@ import javax.validation.Valid;
  * @date 2019/2/1
  */
 @RestController
+@AllArgsConstructor
 @RequestMapping("/role")
 public class RoleController {
-
-	@Autowired
-	private SysRoleService sysRoleService;
-	@Autowired
-	private SysRoleMenuService sysRoleMenuService;
+	private final SysRoleService sysRoleService;
+	private final SysRoleMenuService sysRoleMenuService;
 
 	/**
 	 * 通过ID查询角色信息

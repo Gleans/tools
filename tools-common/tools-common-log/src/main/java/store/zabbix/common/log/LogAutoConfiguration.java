@@ -16,7 +16,7 @@
 
 package store.zabbix.common.log;
 
-import store.zabbix.auth.api.feign.RemoteLogService;
+import store.zabbix.common.api.feign.RemoteLogService;
 import store.zabbix.common.log.aspect.SysLogAspect;
 import store.zabbix.common.log.event.SysLogListener;
 import lombok.AllArgsConstructor;
@@ -35,7 +35,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @Configuration
 @AllArgsConstructor
 @ConditionalOnWebApplication
-@EnableFeignClients({"store.zabbix.admin.api.feign"})
+@EnableFeignClients({"store.zabbix.common.api.feign"})
 public class LogAutoConfiguration {
 	private final RemoteLogService remoteLogService;
 

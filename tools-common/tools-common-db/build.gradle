@@ -1,4 +1,0 @@
-dependencies {
-    api "org.springframework.boot:spring-boot-starter-data-jpa"
-    api 'com.alibaba:druid:1.1.15'
-}

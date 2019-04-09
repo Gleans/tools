@@ -16,7 +16,7 @@
 
 package store.zabbix.common.log.event;
 
-import store.zabbix.auth.api.entity.SysLog;
+import store.zabbix.common.api.entity.SysLog;
 import org.springframework.context.ApplicationEvent;
 
 /**

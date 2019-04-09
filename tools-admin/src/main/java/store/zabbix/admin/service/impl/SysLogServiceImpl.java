@@ -17,8 +17,8 @@
 package store.zabbix.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import store.zabbix.common.api.entity.SysLog;
 import store.zabbix.admin.mapper.SysLogMapper;
-import store.zabbix.auth.api.entity.SysLog;
 import store.zabbix.admin.service.SysLogService;
 import org.springframework.stereotype.Service;
 

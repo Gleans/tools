@@ -16,15 +16,13 @@
 
 package store.zabbix.auth.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
 import store.zabbix.common.core.constant.SecurityConstants;
 import store.zabbix.common.security.component.PigWebResponseExceptionTranslator;
-import store.zabbix.common.security.service.PigClientDetailsService;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -37,6 +35,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+import store.zabbix.common.security.service.PigClientDetailsService;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -48,20 +47,17 @@ import java.util.Map;
  * 认证服务器配置
  */
 @Configuration
+@AllArgsConstructor
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
-	@Autowired
-	private DataSource dataSource;
-	@Qualifier("toolsUserDetailsServiceImpl")
-	@Autowired
-	private UserDetailsService userDetailsService;
-	@Autowired
-	private AuthenticationManager authenticationManager;
-	@Autowired
-	private RedisConnectionFactory redisConnectionFactory;
+	private final DataSource dataSource;
+	private final UserDetailsService userDetailsService;
+	private final AuthenticationManager authenticationManager;
+	private final RedisConnectionFactory redisConnectionFactory;
 
 	@Override
-	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+	@SneakyThrows
+	public void configure(ClientDetailsServiceConfigurer clients) {
 		PigClientDetailsService clientDetailsService = new PigClientDetailsService(dataSource);
 		clientDetailsService.setSelectClientDetailsSql(SecurityConstants.DEFAULT_SELECT_STATEMENT);
 		clientDetailsService.setFindClientDetailsSql(SecurityConstants.DEFAULT_FIND_STATEMENT);

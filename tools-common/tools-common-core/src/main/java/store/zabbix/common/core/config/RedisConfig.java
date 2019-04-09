@@ -16,14 +16,21 @@
 
 package store.zabbix.common.core.config;
 
-import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.RedisCacheConfiguration;
+import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+import java.time.Duration;
 
 /**
  * @author lengleng
@@ -32,9 +39,11 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  */
 @EnableCaching
 @Configuration
-@AllArgsConstructor
+@NoArgsConstructor
 public class RedisConfig {
-	private final RedisConnectionFactory factory;
+
+	@Autowired
+	private RedisConnectionFactory factory;
 
 	@Bean
 	public RedisTemplate<String, Object> redisTemplate() {
@@ -70,5 +79,15 @@ public class RedisConfig {
 	@Bean
 	public ZSetOperations<String, Object> zSetOperations(RedisTemplate<String, Object> redisTemplate) {
 		return redisTemplate.opsForZSet();
+	}
+	/**
+	 * 自定义CacheManager
+	 */
+	@Bean
+	public CacheManager cacheManager(RedisTemplate redisTemplate) {
+		//全局redis缓存过期时间
+		RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofDays(1));
+		RedisCacheWriter redisCacheWriter = RedisCacheWriter.nonLockingRedisCacheWriter(redisTemplate.getConnectionFactory());
+		return new RedisCacheManager(redisCacheWriter, redisCacheConfiguration);
 	}
 }

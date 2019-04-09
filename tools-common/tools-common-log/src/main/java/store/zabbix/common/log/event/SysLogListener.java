@@ -16,8 +16,8 @@
 
 package store.zabbix.common.log.event;
 
-import store.zabbix.auth.api.entity.SysLog;
-import store.zabbix.auth.api.feign.RemoteLogService;
+import store.zabbix.common.api.entity.SysLog;
+import store.zabbix.common.api.feign.RemoteLogService;
 import store.zabbix.common.core.constant.SecurityConstants;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

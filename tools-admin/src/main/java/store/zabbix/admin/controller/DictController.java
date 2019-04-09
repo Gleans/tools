@@ -20,10 +20,9 @@ package store.zabbix.admin.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.springframework.beans.factory.annotation.Autowired;
-import store.zabbix.auth.api.entity.SysDict;
+import store.zabbix.common.api.entity.SysDict;
 import store.zabbix.admin.service.SysDictService;
-import store.zabbix.common.core.util.ResultBean;;
+import store.zabbix.common.core.util.ResultBean;
 import store.zabbix.common.log.annotation.SysLog;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
@@ -42,11 +41,10 @@ import javax.validation.Valid;
  * @since 2019/2/1
  */
 @RestController
+@AllArgsConstructor
 @RequestMapping("/dict")
 public class DictController {
-
-	@Autowired
-	private SysDictService sysDictService;
+	private final SysDictService sysDictService;
 
 	/**
 	 * 通过ID查询字典信息

@@ -17,8 +17,8 @@
 package store.zabbix.common.security.service;
 
 import store.zabbix.common.core.constant.SecurityConstants;
+import lombok.SneakyThrows;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.security.oauth2.common.exceptions.InvalidClientException;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 
@@ -41,11 +41,11 @@ public class PigClientDetailsService extends JdbcClientDetailsService {
 	 *
 	 * @param clientId
 	 * @return
-	 * @throws InvalidClientException
 	 */
 	@Override
+	@SneakyThrows
 	@Cacheable(value = SecurityConstants.CLIENT_DETAILS_KEY, key = "#clientId", unless = "#result == null")
-	public ClientDetails loadClientByClientId(String clientId) throws InvalidClientException {
+	public ClientDetails loadClientByClientId(String clientId) {
 		return super.loadClientByClientId(clientId);
 	}
 }

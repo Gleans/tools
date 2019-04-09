@@ -18,6 +18,7 @@ package store.zabbix.auth.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import store.zabbix.common.security.handler.MobileLoginSuccessHandler;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -42,21 +43,17 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @Order(90)
 @Configuration
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
-
-	private final ObjectMapper objectMapper;
-	private final ClientDetailsService clientDetailsService;
-	@Lazy
-	private final AuthorizationServerTokenServices defaultAuthorizationServerTokenServices;
-
 	@Autowired
-	public WebSecurityConfigurer(ObjectMapper objectMapper, ClientDetailsService clientDetailsService, AuthorizationServerTokenServices defaultAuthorizationServerTokenServices) {
-		this.objectMapper = objectMapper;
-		this.clientDetailsService = clientDetailsService;
-		this.defaultAuthorizationServerTokenServices = defaultAuthorizationServerTokenServices;
-	}
+	private ObjectMapper objectMapper;
+	@Autowired
+	private ClientDetailsService clientDetailsService;
+	@Lazy
+	@Autowired
+	private AuthorizationServerTokenServices defaultAuthorizationServerTokenServices;
 
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+	@SneakyThrows
+	protected void configure(HttpSecurity http) {
 		http
 			.authorizeRequests()
 			.antMatchers(
@@ -68,7 +65,8 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	@Override
-	public AuthenticationManager authenticationManagerBean() throws Exception {
+	@SneakyThrows
+	public AuthenticationManager authenticationManagerBean() {
 		return super.authenticationManagerBean();
 	}
 

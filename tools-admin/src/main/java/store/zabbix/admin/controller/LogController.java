@@ -17,10 +17,9 @@ package store.zabbix.admin.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.springframework.beans.factory.annotation.Autowired;
+import store.zabbix.common.api.entity.SysLog;
 import store.zabbix.admin.service.SysLogService;
-import store.zabbix.auth.api.entity.SysLog;
-import store.zabbix.common.core.util.ResultBean;;
+import store.zabbix.common.core.util.ResultBean;
 import store.zabbix.common.security.annotation.Inner;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -37,10 +36,10 @@ import javax.validation.Valid;
  * @since 2019/2/1
  */
 @RestController
+@AllArgsConstructor
 @RequestMapping("/log")
 public class LogController {
-	@Autowired
-	private SysLogService sysLogService;
+	private final SysLogService sysLogService;
 
 	/**
 	 * 简单分页查询

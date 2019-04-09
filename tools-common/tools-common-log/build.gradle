@@ -1,14 +1,11 @@
+//  日志服务
 dependencies {
-    //安全依赖获取上下文信息
-    api 'org.springframework.security:spring-security-core'
     //工具类核心包
     api project(":tools-common:tools-common-core")
-    // auth-api
+    // common-api
     api project(":tools-common:tools-common-api")
-    //feign
-    api 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    //hutool
-    api "cn.hutool:hutool-all:${hutoolVersion}"
+    //安全依赖获取上下文信息
+    api 'org.springframework.security:spring-security-core'
     //oauth2
     api 'org.springframework.cloud:spring-cloud-starter-oauth2'
 }

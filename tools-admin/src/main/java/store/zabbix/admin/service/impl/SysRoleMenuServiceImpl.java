@@ -19,10 +19,9 @@ package store.zabbix.admin.service.impl;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import store.zabbix.common.api.entity.SysRoleMenu;
 import store.zabbix.admin.mapper.SysRoleMenuMapper;
-import store.zabbix.auth.api.entity.SysRoleMenu;
 import store.zabbix.admin.service.SysRoleMenuService;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.CacheManager;
@@ -43,9 +42,7 @@ import java.util.stream.Collectors;
  * @since 2019/2/1
  */
 @Service
-@NoArgsConstructor
 public class SysRoleMenuServiceImpl extends ServiceImpl<SysRoleMenuMapper, SysRoleMenu> implements SysRoleMenuService {
-
 	@Autowired
 	private CacheManager cacheManager;
 

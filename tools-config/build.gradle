@@ -1,5 +1,15 @@
+// 配置中心 基于spring cloud config
 dependencies {
+    //  配置中心
     implementation "org.springframework.cloud:spring-cloud-config-server"
-    implementation "org.springframework.cloud:spring-cloud-bus"
-    implementation "org.springframework.cloud:spring-cloud-starter-bus-amqp"
+    //  web 模块
+    implementation('org.springframework.boot:spring-boot-starter-web') {
+        //  排除tomcat依赖
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+    //  undertow容器
+    implementation 'org.springframework.boot:spring-boot-starter-undertow'
+    //  Bus
+//    implementation "org.springframework.cloud:spring-cloud-bus"
+//    implementation "org.springframework.cloud:spring-cloud-starter-bus-amqp"
 }

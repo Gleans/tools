@@ -1,56 +1,56 @@
-server:
-  port: 7001
-spring:
-  application:
-    name: tools-config
-  # 远程配置中心
-  #  cloud:
-  #    config:
-  #      server:
-  #        git:
-  #          uri: https://github.com/cuifuan/springcloud-configuration.git
-  #          search-paths: tools-config-repo
-  #          default-label: master
-  #          username:
-  #          password:
-  # 本地配置中心
-  profiles:
-    active: native
-  cloud:
-    config:
-      server:
-        native:
-          search-locations: classpath:config/
-    bus:
-      trace:
-        enabled: true
-  rabbitmq:
-    host: tools-eureka
-    port: 5672
-    username: admin
-    password: 123456
-    virtual-host: /
-# 注册中心配置
-eureka:
-  instance:
-    hostname: tools-eureka
-    prefer-ip-address: true
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
-  client:
-    serviceUrl:
-      defaultZone: http://admin:admin@${eureka.instance.hostname}:8761/eureka/
-info:
-  app:
-    description: This is Spring Cloud remote Registration center.
-    name: tools-config-server
-    version: 0.0
-# 暴露监控端点
-management:
-  endpoint:
-    bus-refresh:
-      enabled: true
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-#        include: refresh,bus-refresh
+#server:
+#  port: 7001
+#spring:
+#  application:
+#    name: tools-config
+#  # 远程配置中心
+#  #  cloud:
+#  #    config:
+#  #      server:
+#  #        git:
+#  #          uri: https://github.com/cuifuan/springcloud-configuration.git
+#  #          search-paths: tools-config-repo
+#  #          default-label: master
+#  #          username:
+#  #          password:
+#  # 本地配置中心
+#  profiles:
+#    active: native
+#  cloud:
+#    config:
+#      server:
+#        native:
+#          search-locations: classpath:config/
+##    bus:
+##      trace:
+##        enabled: true
+##  rabbitmq:
+##    host: tools-eureka
+##    port: 5672
+##    username: admin
+##    password: 123456
+##    virtual-host: /
+## 注册中心配置
+#eureka:
+#  instance:
+#    hostname: tools-eureka
+#    prefer-ip-address: true
+#    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+#  client:
+#    serviceUrl:
+#      defaultZone: http://admin:admin@${eureka.instance.hostname}:8761/eureka/
+#info:
+#  app:
+#    description: "配置中心"
+#    name: tools-config
+#    version: 1.0
+## 暴露监控端点
+#management:
+##  endpoint:
+##    bus-refresh:
+##      enabled: true
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+##        include: refresh,bus-refresh

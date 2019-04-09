@@ -1,17 +1,25 @@
-//通用用户权限管理聚合模块
 //认证授权中心，基于 spring security oAuth2
 dependencies {
     //  配置中心客户端
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
     //  auth api、model 模块
-//    implementation project(':tools-common:tools-common-api')
+    implementation project(':tools-common:tools-common-api')
     //  security
     implementation project(':tools-common:tools-common-security')
     //  JDBC相关
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    //  spring security 、oauth、jwt依赖
+    implementation("org.springframework.cloud:spring-cloud-starter-security"){
+        //旧版本 redis操作有问题
+        exclude group: 'org.springframework.security.oauth', module: 'spring-security-oauth2'
+    }
+    implementation "org.springframework.security.oauth:spring-security-oauth2:${securityOauth}"
     //  数据库
     implementation 'mysql:mysql-connector-java'
+    //  web 模块
+    implementation("org.springframework.boot:spring-boot-starter-web"){
+        exclude group: "org.springframework.boot",module: "spring-boot-starter-tomcat"
+    }
     //  undertow容器
-//    implementation "org.springframework.boot:spring-boot-starter-undertow"
-
+    implementation "org.springframework.boot:spring-boot-starter-undertow"
 }

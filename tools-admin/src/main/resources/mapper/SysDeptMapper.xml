@@ -19,7 +19,7 @@
 <mapper namespace="store.zabbix.admin.mapper.SysDeptMapper">
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="SysDept">
+	<resultMap id="BaseResultMap" type="store.zabbix.common.api.entity.SysDept">
 		<id column="dept_id" property="deptId"/>
 		<result column="name" property="name"/>
 		<result column="create_time" property="createTime"/>
@@ -33,7 +33,7 @@
     </sql>
 
 	<!--关联查询部门列表-->
-	<select id="listDepts" resultType="SysDept">
+	<select id="listDepts" resultType="store.zabbix.common.api.entity.SysDept">
 		SELECT
 			t.*
 		FROM

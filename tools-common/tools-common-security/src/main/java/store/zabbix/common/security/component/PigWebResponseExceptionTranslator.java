@@ -16,6 +16,8 @@
 
 package store.zabbix.common.security.component;
 
+import store.zabbix.common.security.exception.*;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -31,7 +33,6 @@ import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
 import org.springframework.security.oauth2.provider.error.WebResponseExceptionTranslator;
 import org.springframework.security.web.util.ThrowableAnalyzer;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
-import store.zabbix.common.security.exception.*;
 
 /**
  * @author lengleng
@@ -44,7 +45,8 @@ public class PigWebResponseExceptionTranslator implements WebResponseExceptionTr
 	private ThrowableAnalyzer throwableAnalyzer = new DefaultThrowableAnalyzer();
 
 	@Override
-	public ResponseEntity<OAuth2Exception> translate(Exception e) throws Exception {
+	@SneakyThrows
+	public ResponseEntity<OAuth2Exception> translate(Exception e) {
 
 		// Try to extract a SpringSecurityException from the stacktrace
 		Throwable[] causeChain = throwableAnalyzer.determineCauseChain(e);

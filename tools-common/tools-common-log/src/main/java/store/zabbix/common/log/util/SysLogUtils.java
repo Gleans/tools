@@ -19,8 +19,9 @@ package store.zabbix.common.log.util;
 import cn.hutool.core.util.URLUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.http.HttpUtil;
-import store.zabbix.auth.api.entity.SysLog;
+import store.zabbix.common.api.entity.SysLog;
 import store.zabbix.common.core.constant.CommonConstants;
+import lombok.experimental.UtilityClass;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
@@ -35,8 +36,9 @@ import java.util.Objects;
  *
  * @author L.cm
  */
+@UtilityClass
 public class SysLogUtils {
-	public static SysLog getSysLog() {
+	public SysLog getSysLog() {
 		HttpServletRequest request = ((ServletRequestAttributes) Objects
 			.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
 		SysLog sysLog = new SysLog();
@@ -56,7 +58,7 @@ public class SysLogUtils {
 	 *
 	 * @return clientId
 	 */
-	private static String getClientId() {
+	private String getClientId() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication instanceof OAuth2Authentication) {
 			OAuth2Authentication auth2Authentication = (OAuth2Authentication) authentication;
@@ -70,7 +72,7 @@ public class SysLogUtils {
 	 *
 	 * @return username
 	 */
-	private static String getUsername() {
+	private String getUsername() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication == null) {
 			return null;

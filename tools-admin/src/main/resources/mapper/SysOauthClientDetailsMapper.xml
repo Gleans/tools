@@ -20,7 +20,7 @@
 
 <mapper namespace="store.zabbix.admin.mapper.SysOauthClientDetailsMapper">
 
-	<resultMap id="sysOauthClientDetailsMap" type="SysOauthClientDetails">
+	<resultMap id="sysOauthClientDetailsMap" type="store.zabbix.common.api.entity.SysOauthClientDetails">
 		<id property="clientId" column="client_id"/>
 		<result property="resourceIds" column="resource_ids"/>
 		<result property="clientSecret" column="client_secret"/>

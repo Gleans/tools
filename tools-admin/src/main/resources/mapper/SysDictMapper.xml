@@ -20,7 +20,7 @@
 
 <mapper namespace="store.zabbix.admin.mapper.SysDictMapper">
 
-	<resultMap id="sysDictMap" type="SysDict">
+	<resultMap id="sysDictMap" type="store.zabbix.common.api.entity.SysDict">
 		<id property="id" column="id"/>
 		<result property="value" column="value"/>
 		<result property="label" column="label"/>

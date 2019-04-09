@@ -15,7 +15,7 @@ spring:
             # 前端密码解密
             - PasswordDecoderFilter
         #UPMS 模块
-        - id: tools-auth
+        - id: tools-admin
           uri: lb://tools-admin
           predicates:
             - Path=/admin/**
