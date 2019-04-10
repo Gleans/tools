@@ -23,6 +23,7 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -52,6 +53,7 @@ import java.util.Set;
 public class PigUserDetailsServiceImpl implements UserDetailsService {
 	private final RemoteUserService remoteUserService;
 	private final CacheManager cacheManager;
+	private final RedisTemplate redisTemplate;
 
 	/**
 	 * 用户密码登录
@@ -63,6 +65,7 @@ public class PigUserDetailsServiceImpl implements UserDetailsService {
 	@SneakyThrows
 	public UserDetails loadUserByUsername(String username) {
 		Cache cache = cacheManager.getCache("user_details");
+		PigUser ob = (PigUser) cache.get(username).get();
 		if (cache != null && cache.get(username) != null) {
 			return (PigUser) cache.get(username).get();
 		}

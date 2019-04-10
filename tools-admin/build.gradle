@@ -12,11 +12,16 @@ dependencies {
     implementation "com.baomidou:mybatis-plus-boot-starter:${mybatisPlusVersion}"
     //数据库
     implementation 'mysql:mysql-connector-java'
-    //  web 模块
-    implementation('org.springframework.boot:spring-boot-starter-web') {
-        //  排除tomcat依赖
-        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
-    }
-    //  undertow容器
-    implementation 'org.springframework.boot:spring-boot-starter-undertow'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+//    implementation 'org.springframework.boot:spring-boot-devtools'
+
+//    //  web 模块
+//    implementation('org.springframework.boot:spring-boot-starter-web') {
+//        //  排除tomcat依赖
+//        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+//    }
+//    //  undertow容器
+//    implementation 'org.springframework.boot:spring-boot-starter-undertow'
 }

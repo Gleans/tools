@@ -17,6 +17,7 @@
 package store.zabbix.common.security.feign;
 
 import cn.hutool.core.collection.CollUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import store.zabbix.common.core.constant.SecurityConstants;
 import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +35,9 @@ import java.util.Collection;
  */
 @Slf4j
 public class PigFeignClientInterceptor extends OAuth2FeignRequestInterceptor {
+//	@Autowired
 	private final OAuth2ClientContext oAuth2ClientContext;
+//	@Autowired
 	private final AccessTokenContextRelay accessTokenContextRelay;
 
 	/**

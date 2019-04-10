@@ -1,4 +1,4 @@
-rootProject.name = 'tools'
+rootProject.name = 'springcloud-tools'
 //公共工具类核心包
 include 'tools-common:tools-common-core'
 findProject('tools-common:tools-common-core')?.name = 'tools-common-core'
@@ -12,9 +12,8 @@ findProject('tools-common:tools-common-log')?.name = 'tools-common-log'
 include 'tools-common:tools-common-api'
 findProject('tools-common:tools-common-api')?.name = 'tools-common-api'
 //通用用户权限管理系统业务处理模块
-include 'tools-auth'
 include 'tools-eureka'
 include 'tools-config'
-include 'tools-admin'
 include 'tools-gateway'
-include 'tools-resilience4j'
+include 'tools-auth'
+include 'tools-admin'

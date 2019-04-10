@@ -8,7 +8,16 @@ dependencies {
     // 验证码
     implementation "com.github.axet:kaptcha:${kaptchaVersion}"
     //common-core
-    compile(project(':tools-common:tools-common-core')){
-        transitive = true
+//    compile(project(':tools-common:tools-common-core')){
+//        transitive = true
+//    }
+    implementation project(':tools-common:tools-common-core')
+}
+
+
+docker {
+    springBootApplication {
+        baseImage = 'openjdk:8-alpine'
+        ports = [9999, 9999]
     }
 }

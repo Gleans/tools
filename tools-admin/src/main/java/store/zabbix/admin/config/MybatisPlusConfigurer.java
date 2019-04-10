@@ -29,6 +29,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2019/2/1
  */
 @Configuration
+@MapperScan("store.zabbix.admin.mapper")
 public class MybatisPlusConfigurer {
 	/**
 	 * 分页插件

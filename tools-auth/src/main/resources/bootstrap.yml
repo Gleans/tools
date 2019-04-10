@@ -17,9 +17,9 @@ spring:
     allow-bean-definition-overriding: true
 eureka:
   instance:
-    hostname: tools-eureka
+    hostname: tools-auth
     prefer-ip-address: true
     instance-id: ${eureka.instance.hostname}:${server.port}
   client:
     service-url:
-      defaultZone: http://admin:admin@${eureka.instance.hostname}:8761/eureka/
+      defaultZone: http://admin:admin@tools-eureka:8761/eureka/

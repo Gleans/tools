@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: tools-gateway
+  profiles:
+    active: dev
   # 配置中心
   cloud:
     config:
@@ -12,18 +14,15 @@ spring:
       discovery:
         enabled: true
         service-id: tools-config
-  profiles:
-    active: dev
   main:
     allow-bean-definition-overriding: true
 eureka:
   instance:
-    hostname: tools-eureka
     prefer-ip-address: true
-    instance-id: ${eureka.instance.hostname}:${server.port}
+    instance-id: ${spring.application.name}:${server.port}
   client:
     service-url:
-      defaultZone: http://admin:admin@${eureka.instance.hostname}:8761/eureka/
+      defaultZone: http://admin:admin@tools-eureka:8761/eureka/
 #server:
 #  port: 8765
 #eureka:

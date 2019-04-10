@@ -21,6 +21,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
@@ -28,7 +29,7 @@ import java.util.Collection;
  * @date 2019/2/1
  * 扩展用户信息
  */
-public class PigUser extends User {
+public class PigUser extends User implements Serializable {
 	/**
 	 * 用户ID
 	 */

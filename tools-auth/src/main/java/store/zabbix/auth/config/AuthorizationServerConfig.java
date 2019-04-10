@@ -16,6 +16,8 @@
 
 package store.zabbix.auth.config;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import store.zabbix.common.core.constant.SecurityConstants;
 import store.zabbix.common.security.component.PigWebResponseExceptionTranslator;
 import lombok.AllArgsConstructor;
@@ -38,6 +40,7 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 import store.zabbix.common.security.service.PigClientDetailsService;
 
 import javax.sql.DataSource;
+import javax.xml.ws.soap.Addressing;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,14 +49,15 @@ import java.util.Map;
  * @date 2019/2/1
  * 认证服务器配置
  */
+@Slf4j
 @Configuration
 @AllArgsConstructor
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
-	private final DataSource dataSource;
-	private final UserDetailsService userDetailsService;
-	private final AuthenticationManager authenticationManager;
-	private final RedisConnectionFactory redisConnectionFactory;
+	private DataSource dataSource;
+	private UserDetailsService userDetailsService;
+	private AuthenticationManager authenticationManager;
+	private RedisConnectionFactory redisConnectionFactory;
 
 	@Override
 	@SneakyThrows
@@ -62,6 +66,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		clientDetailsService.setSelectClientDetailsSql(SecurityConstants.DEFAULT_SELECT_STATEMENT);
 		clientDetailsService.setFindClientDetailsSql(SecurityConstants.DEFAULT_FIND_STATEMENT);
 		clients.withClientDetails(clientDetailsService);
+		log.info("加载 AuthorizationServerConfig configure1 {}",clients.toString());
 	}
 
 	@Override

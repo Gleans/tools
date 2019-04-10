@@ -20,6 +20,7 @@ package store.zabbix.admin;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import store.zabbix.common.security.annotation.EnablePigFeignClients;
 import store.zabbix.common.security.annotation.EnablePigResourceServer;
 
@@ -39,7 +40,7 @@ import store.zabbix.common.security.annotation.EnablePigResourceServer;
 //@EnableCircuitBreaker
 @EnablePigResourceServer
 @EnablePigFeignClients
-@MapperScan("store.zabbix.admin.mapper")
+//@EnableFeignClients
 @SpringCloudApplication
 public class ToolsAdminApplication {
 	public static void main(String[] args) {

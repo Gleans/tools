@@ -20,6 +20,8 @@ spring:
       # 默认的采样比率为0.1，不能看到所有请求数据
       # 更改采样比率为1，就能看到所有的请求数据了，但是这样会增加接口调用延迟
       probability: 1.0
+  devtools:
+    add-properties: false
 
 # 暴露监控端点
 management:
@@ -82,4 +84,4 @@ security:
   oauth2:
     resource:
       loadBalanced: true
-      token-info-uri: http://tools-auth/oauth/check_token
+      token-info-uri: http://tools-auth:3000/oauth/check_token

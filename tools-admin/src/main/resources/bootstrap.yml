@@ -20,11 +20,11 @@ spring:
 eureka:
   instance:
     prefer-ip-address: true
-    hostname: tools-eureka
+    hostname: tools-admin
     instance-id: ${eureka.instance.hostname}:${server.port}
   client:
     service-url:
-      defaultZone: http://admin:admin@${eureka.instance.hostname}:8761/eureka/
+      defaultZone: http://admin:admin@tools-eureka:8761/eureka/
 #mybatis
 mybatis-plus:
 #  mapper-locations: classpath*:mapper/**Mapper.xml

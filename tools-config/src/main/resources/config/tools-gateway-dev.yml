@@ -11,7 +11,7 @@ spring:
             - Path=/auth/**
           filters:
             # 验证码处理
-#            - ValidateCodeGatewayFilter
+            #            - ValidateCodeGatewayFilter
             # 前端密码解密
             - PasswordDecoderFilter
         #UPMS 模块
@@ -20,11 +20,13 @@ spring:
           predicates:
             - Path=/admin/**
           filters:
-            # 限流配置
+            # 限流配置(filter名称必须是RequestRateLimiter)
             - name: RequestRateLimiter
               args:
-                key-resolver: '#{@remoteAddrKeyResolver}'
+                key-resolver: '#{@ipKeyResolver}'
+                # redis-rate-limiter.replenishRate：允许用户每秒处理多少个请求
                 redis-rate-limiter.replenishRate: 10
+                # redis-rate-limiter.burstCapacity：令牌桶的容量，允许在一秒钟内完成的最大请求数
                 redis-rate-limiter.burstCapacity: 20
               # 降级配置
             - name: Hystrix
