@@ -1,9 +1,10 @@
 # 1.项目环境
 | tools | vision |
 | :------:| :------: |
-| IDEA | 2018.3 |
-| SpringBoot | 2.1.3 RELEASE |
-| Gradle|5.2.1+|
+| IDEA | 2019.2。4 |
+| SpringBoot | 2.2.0 RELEASE |
 | JDK|1.8|
-| Spring Cloud|Greenwich.RELEASE|
+| Spring Cloud|Hoxton.M3|
+
+
 

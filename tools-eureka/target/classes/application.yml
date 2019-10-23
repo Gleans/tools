@@ -20,13 +20,13 @@ eureka:
     service-url:
       defaultZone: http://admin:admin@tools-eureka:8761/eureka/
   # 更改Eureka更新频率将打破服务器的自我保护功能，生产环境下不建议自定义这些配置
-  server:
-    # 清理间隔（单位毫秒，默认是60*1000）
-    eviction-interval-timer-in-ms: 5000
-    # 设为false，关闭自我保护
-    enable-self-preservation: false
-    # 触发自我保护的心跳数比例阈值
-    renewal-percent-threshold: 0.9
+#  server:
+#    # 清理间隔（单位毫秒，默认是60*1000）
+#    eviction-interval-timer-in-ms: 5000
+#    # 设为false，关闭自我保护
+#    enable-self-preservation: false
+#    # 触发自我保护的心跳数比例阈值
+#    renewal-percent-threshold: 0.9
 #  * can be used to select all endpoints,yml(so be sure to add quotes)
 #management:
 #  endpoints:
