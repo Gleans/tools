@@ -65,9 +65,9 @@ public class PigUserDetailsServiceImpl implements UserDetailsService {
 	@SneakyThrows
 	public UserDetails loadUserByUsername(String username) {
 		Cache cache = cacheManager.getCache("user_details");
-		PigUser ob = (PigUser) cache.get(username).get();
-		System.out.println(ob);
 		if (cache != null && cache.get(username) != null) {
+			Object ob=cache.get(username).get();
+			String ad = username;
 			return (PigUser) cache.get(username).get();
 		}
 

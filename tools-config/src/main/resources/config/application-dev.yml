@@ -1,7 +1,7 @@
-# 加解密根密码
-#jasypt:
-#  encryptor:
-#    password: tools #根密码
+# 加密所需的salt(盐)
+jasypt:
+  encryptor:
+    password: 00xx00cuifuan #根密码
 
 # Spring 相关
 spring:
@@ -66,18 +66,18 @@ ribbon:
   ConnectTimeout: 10000
 
 # mybaits-plus配置
-mybatis-plus:
-  mapper-locations: classpath:/mapper/*Mapper.xml
-  global-config:
-    banner: false
-    db-config:
-      id-type: 0
-      field-strategy: 1
-      table-underline: true
-      logic-delete-value: 1
-      logic-not-delete-value: 0
-  configuration:
-    map-underscore-to-camel-case: true
+#mybatis-plus:
+#  mapper-locations: classpath:/mapper/*Mapper.xml
+#  global-config:
+#    banner: false
+#    db-config:
+#      id-type: 0
+#      field-strategy: 1
+#      table-underline: true
+#      logic-delete-value: 1
+#      logic-not-delete-value: 0
+#  configuration:
+#    map-underscore-to-camel-case: true
 
 # spring security 配置
 security:

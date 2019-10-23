@@ -17,6 +17,10 @@ eureka:
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${server.port}
+    # 客户端告知服务端：若在n秒内没有向服务器发送信息，则服务端将其从服务列表中删除
+    lease-expiration-duration-in-seconds: 10
+    # 客户端每隔n秒向服务端发送数据包
+    lease-renewal-interval-in-seconds: 5
   client:
     serviceUrl:
       defaultZone: http://admin:admin@tools-eureka:8761/eureka/

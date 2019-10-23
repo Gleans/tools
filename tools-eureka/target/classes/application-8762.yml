@@ -1,0 +1,10 @@
+server:
+  port: 8762
+eureka:
+  client:
+    #值为false意味着自身仅作为服务器，不作为客户端
+    register-with-eureka: false
+    # 无需注册自身
+    fetch-registry: false
+    service-url:
+      defaultZone: http://admin:admin@tools-eureka:8761/eureka/

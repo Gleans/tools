@@ -3,6 +3,6 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: pass1234
+    username: ENC(eYFwbGW3Txj0rVSxsIrN8Q==)
+    password: ENC(HrWgNhNbfnGfNYEU2jHnqw==)
     url: jdbc:mysql://tools-mysql:3306/tools?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
