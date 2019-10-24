@@ -19,7 +19,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <jasypt.version>2.1.0</jasypt.version>
         <spring-boot-admin.version>2.1.6</spring-boot-admin.version>
-        <hutool.version>4.6.8</hutool.version>
+        <hutool.version>5.0.0</hutool.version>
     </properties>
 
 
@@ -77,10 +77,25 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
     </dependencies>
 
     <modules>
         <module>tools-eureka</module>
+        <module>tools-common</module>
+        <module>tools-admin</module>
+        <module>tools-auth</module>
+        <module>tools-config</module>
+        <module>tools-gateway</module>
     </modules>
 
     <dependencyManagement>
@@ -99,6 +114,82 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>store.zabbix</groupId>
+                <artifactId>tools-common-admin</artifactId>
+                <version>1.0.0</version>
+
+            </dependency>
+            <dependency>
+                <groupId>store.zabbix</groupId>
+                <artifactId>tools-common-config</artifactId>
+                <version>1.0.0</version>
+
+            </dependency>
+            <dependency>
+                <groupId>store.zabbix</groupId>
+                <artifactId>tools-common-eureka</artifactId>
+                <version>1.0.0</version>
+
+            </dependency>
+            <dependency>
+                <groupId>store.zabbix</groupId>
+                <artifactId>tools-common-gateway</artifactId>
+                <version>1.0.0</version>
+
+            </dependency>
+            <dependency>
+                <groupId>store.zabbix</groupId>
+                <artifactId>tools-common-auth</artifactId>
+                <version>1.0.0</version>
+
+            </dependency>
+            <dependency>
+                <groupId>store.zabbix</groupId>
+                <artifactId>tools-common-core</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>store.zabbix</groupId>
+                <artifactId>tools-common-log</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>store.zabbix</groupId>
+                <artifactId>tools-common-api</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>store.zabbix</groupId>
+                <artifactId>tools-common-security</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>2.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>3.1.2</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>5.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security.oauth.boot</groupId>
+                <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+                <version>2.2.0.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-redis</artifactId>
+                <version>2.2.0.RELEASE</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
