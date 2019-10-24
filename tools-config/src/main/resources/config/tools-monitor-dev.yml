@@ -1,6 +1,0 @@
-spring:
-  # 安全配置
-  security:
-    user:
-      name: admin    # pig
-      password: admin # pig

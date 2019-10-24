@@ -1,4 +1,0 @@
-//通用用户权限管理系统公共api模块
-dependencies {
-    api project(':tools-common:tools-common-core')
-}

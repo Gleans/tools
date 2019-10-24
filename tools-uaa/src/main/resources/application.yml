@@ -1,0 +1,16 @@
+server:
+  port: 8001
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka
+  instance:
+    instance-id: ${spring.kingo.client.ip-address}:${server.port}
+    prefer-ip-address: true
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/kg-admin?useSSL=FALSE&serverTimezone=UTC
+    username: root
+    password: root

@@ -81,6 +81,8 @@
 
     <modules>
         <module>tools-eureka</module>
+        <module>tools-uaa</module>
+        <module>tools-gateway</module>
     </modules>
 
     <dependencyManagement>
