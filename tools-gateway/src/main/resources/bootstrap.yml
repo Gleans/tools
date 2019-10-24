@@ -1,28 +1,15 @@
-server:
-  port: 9999
 spring:
   application:
-    name: tools-gateway
-  profiles:
-    active: dev
-  # 配置中心
+    name: FEBS-Gateway
   cloud:
-    config:
-      fail-fast: true
-      name: ${spring.application.name}
-      profile: ${spring.profiles.active}
+    nacos:
+      config:
+        server-addr: ${nacos.url}:8001
+        group: DEFAULT_GROUP
+        prefix: febs-gateway
+        file-extension: yaml
       discovery:
-        enabled: true
-        service-id: tools-config
-  main:
-    allow-bean-definition-overriding: true
-eureka:
-  instance:
-    prefer-ip-address: true
-    instance-id: ${spring.application.name}:${server.port}
-  client:
-    service-url:
-      defaultZone: http://admin:admin@tools-eureka:8761/eureka/
+        server-addr: ${nacos.url}:8001
 #server:
 #  port: 8765
 #eureka:
