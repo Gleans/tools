@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: FEBS-Gateway
+  cloud:
+    nacos:
+      config:
+        server-addr: ${nacos.url}:8001
+        group: DEFAULT_GROUP
+        prefix: febs-gateway
+        file-extension: yaml
+      discovery:
+        server-addr: ${nacos.url}:8001
+#server:
+#  port: 8765
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://tools-eureka:8761/eureka/
+#spring:
+#  application:
+#    name: service-feign
+#  sleuth:
+#    sampler:
+#      probability: 1.0
+#    feign:
+#      enabled: true
+#  zipkin:
+#    base-url: http://tools-eureka:9411
+#feign:
+#  hystrix:
+#    enabled: true
+# 开启Feign熔断
+# IDEA会提示Cannot resolve configuration property 'feign.hystrix.enabled
+# 但实际使用时还是会生效
+
+# Spring Cloud Sleuth 有一个 Sampler 策略，可以通过这个实现类来控制采样算法。
+# 采样器不会阻碍 span 相关 id 的产生，但是会对导出以及附加事件标签的相关操作造成影响。
+# Sleuth 默认采样算法的实现是 Reservoir sampling，具体的实现类是 PercentageBasedSampler，
+# 默认的采样比例为: 0.1(即 10%)。不过我们可以通过spring.sleuth.sampler.percentage来设置，
+# 所设置的值介于 0.0 到 1.0 之间，1.0 则表示全部采集
+
+# 水塘抽样(Reservoir Sampling) : https://www.cnblogs.com/strugglion/p/6424874.html
+
+

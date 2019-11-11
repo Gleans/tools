@@ -30,9 +30,8 @@ public class UserDetailServiceImpl implements UserDetailsService {
         List<GrantedAuthority> authorities = new ArrayList<>(1);
         authorities.add(authority);
 
-        UserDetails userDetails = new User(username,
-                passwordEncoder.encode("admin"), authorities);
         // 返回用户信息，注意加密
-        return userDetails;
+        return new User(username,
+                passwordEncoder.encode("admin"), authorities);
     }
 }
