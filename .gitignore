@@ -2,4 +2,4 @@
 nacos/logs/
 *.iml
 nacos/bin/logs
-target
+tools-view/.github

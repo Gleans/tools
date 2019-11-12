@@ -1,22 +1,3 @@
-#server:
-#  port: 8001
-#eureka:
-#  client:
-#    serviceUrl:
-#      defaultZone: http://127.0.0.1:8761/eureka
-#  instance:
-#    instance-id: ${spring.kingo.client.ip-address}:${server.port}
-#    prefer-ip-address: true
-#
-#
-#spring:
-#  datasource:
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://127.0.0.1:3306/kg-admin?useSSL=FALSE&serverTimezone=UTC
-#    username: root
-#    password: root
-#nacos:
-#  url: @nacos.url@
 #服务名
 spring:
   application:
@@ -27,8 +8,10 @@ spring:
       config:
         server-addr: 127.0.0.1:9999
         group: DEFAULT_GROUP
-        prefix: tools-jdbc
+        prefix: tools-uaa
         file-extension: yaml
       discovery:
         server-addr: 127.0.0.1:9999
-        namespace: tools
+        namespace: public
+  profiles:
+    active: dev
