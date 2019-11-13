@@ -29,9 +29,9 @@ import java.util.concurrent.TimeUnit;
 @EnableAuthorizationServer
 public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
 
-    // @Autowired
-    // @Qualifier("userDetailServiceImpl")
-    // private UserDetailsService userDetailsService;
+    @Autowired
+    @Qualifier("userDetailServiceImpl")
+    private UserDetailsService userDetailsService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;

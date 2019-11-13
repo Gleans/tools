@@ -1,15 +1,17 @@
 spring:
   application:
-    name: FEBS-Gateway
+    name: tools-gateway
   cloud:
     nacos:
       config:
-        server-addr: ${nacos.url}:8001
+        server-addr: tools-nacos:9999
         group: DEFAULT_GROUP
-        prefix: febs-gateway
+        prefix: tools-gateway
         file-extension: yaml
       discovery:
-        server-addr: ${nacos.url}:8001
+        server-addr: tools-nacos:9999
+  profiles:
+    active: dev
 #server:
 #  port: 8765
 #eureka:
