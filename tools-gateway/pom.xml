@@ -10,7 +10,6 @@
     </parent>
 
     <artifactId>tools-gateway</artifactId>
-    <version>0.0.1</version>
     <name>${project.artifactId}</name>
     <description>Demo Gateway for Spring Boot</description>
 
@@ -24,20 +23,28 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-oauth2</artifactId>-->
+<!--&lt;!&ndash;            <exclusions>&ndash;&gt;-->
+<!--&lt;!&ndash;                <exclusion>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <groupId>org.springframework.boot</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <artifactId>spring-boot-starter-tomcat</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;                </exclusion>&ndash;&gt;-->
+<!--&lt;!&ndash;            </exclusions>&ndash;&gt;-->
+<!--        </dependency>-->
+        <!--undertow容器-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-undertow</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-oauth2</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                </exclusion>
-            </exclusions>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
-        <!--undertow容器-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-undertow</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
     </dependencies>
 
