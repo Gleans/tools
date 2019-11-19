@@ -18,7 +18,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-boot-admin.version>2.1.6</spring-boot-admin.version>
         <hutool.version>4.6.8</hutool.version>
-        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
         <lombok.version>1.18.10</lombok.version>
     </properties>
 
