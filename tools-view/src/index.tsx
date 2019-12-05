@@ -8,6 +8,7 @@ import ReactDOM from "react-dom";
 import { Base64 } from 'js-base64';
 import Form, { FormComponentProps } from "antd/lib/form/Form";
 import { Button, Input, Divider, Icon, Checkbox } from "antd";
+
 import "antd/dist/antd.css";
 // import { any } from "prop-types";
 
@@ -82,27 +83,27 @@ function App() {
 
         if (formRef.current) {
             let form = formRef.current.form;
-            let formData: FormData = new FormData();
+            var searchParams = new URLSearchParams()
 
-            formData.set('username', form.getFieldValue("username"));
-            formData.set('password', form.getFieldValue("password"));
-            formData.set('grant_type', 'password');
+            let map: Map<String, String> = new Map();
 
+            searchParams.set('username', form.getFieldValue("username"));
+            searchParams.set('password', form.getFieldValue("password"));
+            searchParams.set('grant_type', 'password');
 
-            fetch("api/auth/oauth/token", {
-                method: "POST",
+            fetch('/api/auth/oauth/token', {
+                method: 'POST',
+                body: searchParams,
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+                    'Content-Type': 'application/x-www-form-urlencoded',
                     'Authorization': 'Basic ' + Base64.encode("admin:admin")
-                },
-                body: formData
-            }).then((res) => {
-                return res.json(); //请求成功，获请求元数据
-            }).then((result) => {
-                console.log(result); // 拿到数据进行页面渲染
-            }).catch((err) => {
-                //出错了
-            })
+                }
+            }).then(function (response) {
+                return response.json();
+            }).then(function (myJson) {
+                console.log(myJson);
+            });
+
 
         } else {
             console.log("表单无值");
