@@ -4,3 +4,5 @@ nacos/logs/
 nacos/bin/logs
 tools-view/.github
 /tools-*/target/
+rebel.xml
+**/src/main/**/rebel.xml

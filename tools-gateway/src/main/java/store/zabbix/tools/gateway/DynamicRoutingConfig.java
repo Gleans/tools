@@ -54,7 +54,7 @@ public class DynamicRoutingConfig implements ApplicationEventPublisherAware , Co
 
     private void refreshRouting() throws NacosException {
         Properties properties = new Properties();
-        properties.put(PropertyKeyConst.SERVER_ADDR, "192.168.3.12:9999");
+        properties.put(PropertyKeyConst.SERVER_ADDR, "tools-nacos:9999");
 //        properties.put(PropertyKeyConst.NAMESPACE, "");
         ConfigService configService = NacosFactory.createConfigService(properties);
         configService.addListener(DATA_ID, GROUP, new Listener() {
