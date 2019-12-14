@@ -6,7 +6,7 @@
         <groupId>store.zabbix</groupId>
         <artifactId>tools</artifactId>
         <version>1.0.0</version>
-        <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
+<!--        <relativePath>../pom.xml</relativePath> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
     </parent>
 
     <artifactId>tools-uaa</artifactId>
@@ -59,6 +59,11 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
             <version>${nacos.version}</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.edas</groupId>-->
+<!--            <artifactId>edas-sc-gray-starter</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
@@ -66,6 +71,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.2.2.RELEASE</version>
             </plugin>
         </plugins>
     </build>
