@@ -1,0 +1,10 @@
+version: '2'
+services:
+  tools-uaa:
+    build:
+      context: ./
+      dockerfile: ./tools-uaa/Dockerfile
+    restart: always
+    container_name: tools-uaa
+    hostname: tools-nacos
+    image: tools-uaa

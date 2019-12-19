@@ -12,6 +12,7 @@
     <artifactId>tools-uaa</artifactId>
     <name>${project.artifactId}</name>
     <description>Uaa 认证授权模块</description>
+    <packaging>jar</packaging>
 
     <properties>
         <java.version>1.8</java.version>
