@@ -24,4 +24,4 @@ EXPOSE 8001
 
 ADD ./tools-uaa/target/tools-uaa.jar ./
 
-CMD sleep 60;java -Djava.security.egd=file:/dev/./urandom -jar tools-uaa.jar
+CMD java -Xdebug -Djava.security.egd=file:/dev/./urandom -jar tools-uaa.jar

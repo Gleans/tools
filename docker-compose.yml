@@ -4,7 +4,25 @@ services:
     build:
       context: ./
       dockerfile: ./tools-uaa/Dockerfile
+    ports:
+      - 8001:8001
+    extra_hosts:
+      - "tools-jdbc:172.17.0.1"
+      - "tools-nacos:172.17.0.1"
     restart: always
     container_name: tools-uaa
-    hostname: tools-nacos
+    hostname: tools-docker
     image: tools-uaa
+  tools-gateway:
+    build:
+      context: ./
+      dockerfile: ./tools-gateway/Dockerfile
+    ports:
+      - 8443:8443
+    restart: always
+    container_name: tools-uaa
+    hostname: tools-docker
+    image: tools-uaa
+    extra_hosts:
+      - "tools-jdbc:172.17.0.1"
+      - "tools-nacos:172.17.0.1"
