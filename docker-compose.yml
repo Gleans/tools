@@ -1,18 +1,18 @@
 version: '2'
 services:
-  tools-uaa:
+  tools-auth:
     build:
       context: ./
-      dockerfile: ./tools-uaa/Dockerfile
+      dockerfile: ./tools-auth/Dockerfile
     ports:
       - 8001:8001
     extra_hosts:
       - "tools-jdbc:172.17.0.1"
       - "tools-nacos:172.17.0.1"
     restart: always
-    container_name: tools-uaa
+    container_name: tools-auth
     hostname: tools-docker
-    image: tools-uaa
+    image: tools-auth
   tools-gateway:
     build:
       context: ./
@@ -20,9 +20,22 @@ services:
     ports:
       - 8443:8443
     restart: always
-    container_name: tools-uaa
+    container_name: tools-auth
     hostname: tools-docker
-    image: tools-uaa
+    image: tools-auth
+    extra_hosts:
+      - "tools-jdbc:172.17.0.1"
+      - "tools-nacos:172.17.0.1"
+  tools-service:
+    build:
+      context: ./
+      dockerfile: ./tools-service/Dockerfile
+    ports:
+      - 8848:8848
+    restart: always
+    container_name: tools-service
+    hostname: tools-docker
+    image: tools-service
     extra_hosts:
       - "tools-jdbc:172.17.0.1"
       - "tools-nacos:172.17.0.1"

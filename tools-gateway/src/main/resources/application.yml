@@ -1,19 +1,18 @@
-spring:
-  cloud:
-    gateway:
-      routes:
-        - id: tools-auth
-          predicates:
-          - Path=/auth/**
-#            - name: Path
-#              arg: {
-#                pattern: /auth/**
-#              }
-          filters:
-#          - StripPrefix={_genkey_0: 1}
-          - StripPrefix=1
-#            - name: StripPrefix
-#              args: {
-#                _genkey_0: 1
-#              }
-          uri: lb://tools-uaa
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: tools-auth
+#          predicates:
+#            - Path=/auth/**
+#          filters:
+#            - SwaggerHeaderFilter
+#            - StripPrefix=1
+#          uri: lb://tools-auth
+#        - id: tools-service
+#          predicates:
+#            - Path=/service/**
+#          filters:
+#            - SwaggerHeaderFilter
+#            - StripPrefix=1
+#          uri: lb://tools-service
