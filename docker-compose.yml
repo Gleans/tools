@@ -20,9 +20,9 @@ services:
     ports:
       - 8443:8443
     restart: always
-    container_name: tools-auth
+    container_name: tools-gateway
     hostname: tools-docker
-    image: tools-auth
+    image: tools-gateway
     extra_hosts:
       - "tools-jdbc:172.17.0.1"
       - "tools-nacos:172.17.0.1"

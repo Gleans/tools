@@ -23,11 +23,11 @@ public class SysUser {
      * 用户名
      */
     @TableField(value = "username")
-    @ApiModelProperty(name = "用户名")
+    @ApiModelProperty(name = "用户名",required = true)
     private String username;
 
     @TableField(value = "password")
-    @ApiModelProperty(name = "")
+    @ApiModelProperty(name = "密码")
     private String password;
 
     /**
@@ -41,7 +41,7 @@ public class SysUser {
      * 简介
      */
     @TableField(value = "phone")
-    @ApiModelProperty(name = "简介")
+    @ApiModelProperty(name = "手机号")
     private String phone;
 
     /**
