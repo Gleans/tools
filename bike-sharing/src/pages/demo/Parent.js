@@ -1,35 +1,39 @@
 import React from 'react'
 
 export default class Life extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            count: 0
-        };
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         count: 0
+    //     };
+    // }
+
+    state = {
+        count: 0
     }
 
-    UNSAFE_componentWillMount(){
+    UNSAFE_componentWillMount() {
         console.log('will mount')
     }
 
-    UNSAFE_componentDidMount(){
+    UNSAFE_componentDidMount() {
         console.log('did mount')
     }
 
-    UNSAFE_componentWillReceiveProps(newProps){
-        console.log('will props'+ newProps.name)
+    UNSAFE_componentWillReceiveProps(newProps) {
+        console.log('will props' + newProps.name)
     }
 
-    UNSAFE_shouldComponentUpdate(){
+    UNSAFE_shouldComponentUpdate() {
         console.log('show update')
         return
     }
 
-    UNSAFE_componentWillUpdate(){
+    UNSAFE_componentWillUpdate() {
         console.log('will update')
     }
 
-    UNSAFE_componentDidUpdate(){
+    UNSAFE_componentDidUpdate() {
         console.log('did update')
     }
 
