@@ -21,6 +21,7 @@
     "camelcase": "^5.3.1",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "core-js": "^3",
+    "create-react-app": "^3.3.0",
     "cryptiles": "^4.1.2",
     "css-loader": "3.2.0",
     "dotenv": "8.2.0",

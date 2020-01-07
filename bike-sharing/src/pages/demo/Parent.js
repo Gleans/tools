@@ -16,10 +16,6 @@ export default class Life extends React.Component {
         console.log('will mount')
     }
 
-    UNSAFE_componentDidMount() {
-        console.log('did mount')
-    }
-
     UNSAFE_componentWillReceiveProps(newProps) {
         console.log('will props' + newProps.name)
     }
