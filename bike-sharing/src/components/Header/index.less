@@ -1,25 +1,43 @@
-.header{
-    .header-top{
-        height: 60px;
-        line-height:60px;
-        padding: 0 20px;
-        text-align: right;
+.header {
+    .header-top {
+        height     : 60px;
+        line-height: 60px;
+        padding    : 0 20px;
+        text-align : right;
+
         a {
             margin-left: 40px;
         }
     }
-    .breadcrumb{
-        height: 40px;
+
+    .breadcrumb {
+        height     : 40px;
         line-height: 40px;
-        padding: 0 20px;
-        border-top: 1px solid #001529;
-        .breadcrumb-title{
+        padding    : 0 20px;
+        border-top : 1px solid #001529;
+
+        .breadcrumb-title {
             text-align: center;
         }
-        .weather{
+
+        .weather {
             text-align: right;
-            .date{
+            font-size : 14px;
+
+            .date {
                 margin-right: 10px;
+            }
+
+            .weather-img {
+                img {
+                    // vertical-align: text-top;
+                    height        : 15px;
+                    margin-right  : 5px;
+                }
+            }
+
+            .weather-detail {
+                vertical-align: middle;
             }
         }
     }
