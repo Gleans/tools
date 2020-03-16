@@ -6,3 +6,4 @@ tools-view/.github
 /tools-*/target/
 rebel.xml
 **/src/main/**/rebel.xml
+bike-sharing/node_modules/
