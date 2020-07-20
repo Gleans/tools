@@ -31,3 +31,4 @@ build/
 .vscode/
 docker/mysql/
 docker/redis/data/
+docker/nacos/standalone-logs/
