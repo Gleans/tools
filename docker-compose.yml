@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  mysql5.7:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root # 设置root用户密码
+    ports:
+      - 3306:3306
+    volumes: # 挂载持久化地址（个人理解）
+      - ./docker/mysql/:/var/lib/mysql/
+      - ./docker/conf/:/etc/mysql/
+# 暂时用不到redis
+#  redis:
+#    image: redis:4.0.2
+#    container_name: my_redis
+#    volumes:
+#      - ./docker/redis/data:/data
+#      - ./docker/redis/conf/:/usr/local/etc/redis/
+#    command: /bin/bash -c "redis-server /usr/local/etc/redis/redis.conf"
+#    ports:
+#      - 8089:6379
