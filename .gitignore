@@ -32,3 +32,6 @@ build/
 docker/mysql/
 docker/redis/data/
 docker/nacos/standalone-logs/
+docker/mongo/mongo-volume
+docker/consul/raft/snapshots
+docker/consul/serf

@@ -59,13 +59,59 @@ services:
     ports:
       - 3000:3000
     restart: on-failure
-# 暂时用不到redis
-#  redis:
-#    image: redis:4.0.2
-#    container_name: my_redis
-#    volumes:
-#      - ./docker/redis/data:/data
-#      - ./docker/redis/conf/:/usr/local/etc/redis/
-#    command: /bin/bash -c "redis-server /usr/local/etc/redis/redis.conf"
-#    ports:
-#      - 8089:6379
+  ekko_rabbit:
+    image: rabbitmq:management-alpine
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_DEFAULT_VHOST: "/"
+    restart: always
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes:
+      - "./docker/rabbit/conf/:/etc/rabbitmq/"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 500M
+    redis:
+      image: redis:4.0.2
+      container_name: my_redis
+      volumes:
+        - ./docker/redis/data:/data
+        - ./docker/redis/conf/:/usr/local/etc/redis/
+      command: /bin/bash -c "redis-server /usr/local/etc/redis/redis.conf"
+      ports:
+        - 8089:6379
+  # consul:
+  #   image: consul:1.7.3
+  #   container_name: consul
+  #   command: agent -server -bootstrap-expect=1 -data-dir /usr/local/consul -node=node1 -bind=0.0.0.0 -client=0.0.0.0 -datacenter=dc1 -ui
+  #   volumes:
+  #     - ./docker/consul:/usr/local/consul
+  #   ports:
+  #     - 8500:8500
+  #     - 8600:8600/udp
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         memory: 500M
+  # mongodb:
+  #   image: mongo:4.2.6 # 镜像:版本
+  #   container_name: mongo_db
+  #   environment:
+  #     - MONGO_INITDB_DATABASE=admin
+  #     # 默认开启授权，并创建超管用户 mongo -u godis -p godis@admin --authenticationDatabase admin
+  #     - MONGO_INITDB_ROOT_USERNAME=root
+  #     # 超管密码，敏感数据也可以使用 `secrets`，不赘述。
+  #     - MONGO_INITDB_ROOT_PASSWORD=root
+  #     # .js 中默认的数据库
+  #   volumes:
+  #     - ./docker/mongo/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+  #     - ./docker/mongo/mongo-volume:/data/db
+  #   ports:
+  #     - "27017-27019:27017-27019"
+  #   restart: always
