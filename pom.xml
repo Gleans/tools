@@ -18,6 +18,8 @@
 
     <modules>
         <module>pro-service</module>
+        <module>pro-auth</module>
+        <module>pro-gateway</module>
     </modules>
 
     <dependencies>
