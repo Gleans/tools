@@ -8,9 +8,9 @@
         <version>0.0.1</version>
     </parent>
 
-    <artifactId>gateway</artifactId>
+    <artifactId>pro-gateway</artifactId>
     <version>0.0.1</version>
-    <name>gateway</name>
+    <name>pro-gateway</name>
     <description>路由模块</description>
 
     <properties>

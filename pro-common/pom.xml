@@ -8,7 +8,7 @@
         <version>0.0.1</version>
     </parent>
 
-    <artifactId>common</artifactId>
+    <artifactId>pro-common</artifactId>
     <version>0.0.1</version>
     <name>pro-common</name>
     <description>通用实体</description>

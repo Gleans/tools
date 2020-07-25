@@ -10,7 +10,7 @@
 
     <artifactId>auth</artifactId>
     <version>0.0.1</version>
-    <name>auth</name>
+    <name>pro-auth</name>
     <description>鉴权模块</description>
 
     <properties>

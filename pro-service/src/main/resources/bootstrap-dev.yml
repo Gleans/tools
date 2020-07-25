@@ -1,0 +1,31 @@
+server:
+  port: 10000
+spring:
+  profiles: dev
+  application:
+    name: pro-service
+  cloud:
+    nacos:
+      config:
+        extensionConfigs:
+          - data-id: jdbc-dev.yaml
+            refresh: true
+        group: DEFAULT_GROUP
+        namespace: 5fab462e-ed12-4fb1-957b-6cb02b57c079
+        password: nacos
+        server-addr: 127.0.0.1:9999
+        username: nacos
+      discovery:
+        group: DEFAULT_GROUP
+        namespace: 5fab462e-ed12-4fb1-957b-6cb02b57c079
+        password: nacos
+        server-addr: localhost:9999
+        username: nacos
+  flyway:
+    baseline-on-migrate: true
+    enabled: true
+    locations: classpath:db/migration,db/migration-mock
+    password: root
+    schemas: springcloud
+    url: jdbc:mysql://localhost:3306/springcloud?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    user: root

@@ -1,3 +1,5 @@
+# 启动命令
+# docker-compose --compatibility up -d
 version: '3'
 
 services:
@@ -16,9 +18,9 @@ services:
       - ./docker/mysql/:/var/lib/mysql/
       - ./docker/conf/:/etc/mysql/
   nacos:
-    image: nacos/nacos-server:latest
-    container_name: nacos-standalone
-    restart: unless-stopped
+    image: nacos/nacos-server:1.2.1
+    container_name: nacos
+    restart: always
     depends_on:
       - mysql5.7
     environment:
@@ -30,17 +32,13 @@ services:
       MYSQL_SERVICE_PORT: 3306
       MYSQL_SERVICE_USER: root
       MYSQL_SERVICE_PASSWORD: root
-      #JVM调优参数
+      NACOS_APPLICATION_PORT: 9999
       JVM_XMS: 512m
-      JVM_XMX: 512m
-      JVM_XMN: 512m
-      JVM_MS: 128m
       JVM_MMS: 320m
     volumes:
       - ./docker/nacos/standalone-logs/:/home/nacos/logs
-      - ./docker/nacos/init.d/custom.properties:/home/nacos/init.d/custom.properties
       - ./docker/nacos/plugins/:/home/nacos/plugins
-      - ./docker/nacos/conf/bootstrap.properties:/home/nacos/conf/bootstrap.properties
+      - ./docker/nacos/conf/application.properties:/home/nacos/conf/application.properties
     ports:
       - "9999:9999"
   prometheus:
