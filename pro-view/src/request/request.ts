@@ -18,17 +18,17 @@ const service = axios.create({
 
 // request拦截器
 service.interceptors.request.use(
-  config => {
+  com.github.luca168.auth.config => {
     // login接口不传token
     if (
       localStorage.getItem("TOKEN-VUE3-TS-EL-ADMIN") &&
-      config.url != "auth/login"
+      com.github.luca168.auth.config.url != "auth/login"
     ) {
-      config.headers["Authorization"] =
+      com.github.luca168.auth.config.headers["Authorization"] =
         "Bearer " + localStorage.getItem("TOKEN-VUE3-TS-EL-ADMIN"); // 让每个请求携带自定义token 请根据实际情况自行修改
     }
-    config.headers["Content-Type"] = "application/json";
-    return config;
+    com.github.luca168.auth.config.headers["Content-Type"] = "application/json";
+    return com.github.luca168.auth.config;
   },
   error => {
     // Do something with request error

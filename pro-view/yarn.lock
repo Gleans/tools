@@ -3249,9 +3249,9 @@ condense-newlines@^0.2.1:
     is-whitespace "^0.3.0"
     kind-of "^3.0.2"
 
-config-chain@^1.1.12:
+com.github.luca168.auth.config-chain@^1.1.12:
   version "1.1.12"
-  resolved "https://registry.yarnpkg.com/config-chain/-/config-chain-1.1.12.tgz#0fde8d091200eb5e808caf25fe618c02f48e4efa"
+  resolved "https://registry.yarnpkg.com/com.github.luca168.auth.config-chain/-/com.github.luca168.auth.config-chain-1.1.12.tgz#0fde8d091200eb5e808caf25fe618c02f48e4efa"
   integrity sha512-a1eOIcu8+7lUInge4Rpf/n4Krkf3Dd9lqhljRzII1/Zno/kRtUWnznPO3jOKBmTEktkt3fkxisUcivoj0ebzoA==
   dependencies:
     ini "^1.3.4"
@@ -4698,9 +4698,9 @@ finalhandler@~1.1.2:
     statuses "~1.5.0"
     unpipe "~1.0.0"
 
-find-babel-config@^1.1.0:
+find-babel-com.github.luca168.auth.config@^1.1.0:
   version "1.2.0"
-  resolved "https://registry.yarnpkg.com/find-babel-config/-/find-babel-config-1.2.0.tgz#a9b7b317eb5b9860cda9d54740a8c8337a2283a2"
+  resolved "https://registry.yarnpkg.com/find-babel-com.github.luca168.auth.config/-/find-babel-com.github.luca168.auth.config-1.2.0.tgz#a9b7b317eb5b9860cda9d54740a8c8337a2283a2"
   integrity sha512-jB2CHJeqy6a820ssiqwrKMeyC6nNdmrcgkKWJWmpoxpE8RKciYJXCcXRq1h2AzCo5I5BJeN2tkGEO3hLTuePRA==
   dependencies:
     json5 "^0.5.1"
@@ -6189,7 +6189,7 @@ jest-cli@^23.6.0:
     istanbul-lib-instrument "^1.10.1"
     istanbul-lib-source-maps "^1.2.4"
     jest-changed-files "^23.4.2"
-    jest-config "^23.6.0"
+    jest-com.github.luca168.auth.config "^23.6.0"
     jest-environment-jsdom "^23.4.0"
     jest-get-type "^22.1.0"
     jest-haste-map "^23.6.0"
@@ -6214,9 +6214,9 @@ jest-cli@^23.6.0:
     which "^1.2.12"
     yargs "^11.0.0"
 
-jest-config@^23.6.0:
+jest-com.github.luca168.auth.config@^23.6.0:
   version "23.6.0"
-  resolved "https://registry.yarnpkg.com/jest-config/-/jest-config-23.6.0.tgz#f82546a90ade2d8c7026fbf6ac5207fc22f8eb1d"
+  resolved "https://registry.yarnpkg.com/jest-com.github.luca168.auth.config/-/jest-com.github.luca168.auth.config-23.6.0.tgz#f82546a90ade2d8c7026fbf6ac5207fc22f8eb1d"
   integrity sha512-i8V7z9BeDXab1+VNo78WM0AtWpBRXJLnkT+lyT+Slx/cbP5sZJ0+NDuLcmBE5hXAoK0aUp7vI+MOxR+R4d8SRQ==
   dependencies:
     babel-core "^6.0.0"
@@ -6389,7 +6389,7 @@ jest-runner@^23.6.0:
   dependencies:
     exit "^0.1.2"
     graceful-fs "^4.1.11"
-    jest-config "^23.6.0"
+    jest-com.github.luca168.auth.config "^23.6.0"
     jest-docblock "^23.2.0"
     jest-haste-map "^23.6.0"
     jest-jasmine2 "^23.6.0"
@@ -6413,7 +6413,7 @@ jest-runtime@^23.6.0:
     exit "^0.1.2"
     fast-json-stable-stringify "^2.0.0"
     graceful-fs "^4.1.11"
-    jest-config "^23.6.0"
+    jest-com.github.luca168.auth.config "^23.6.0"
     jest-haste-map "^23.6.0"
     jest-message-util "^23.4.0"
     jest-regex-util "^23.3.0"
@@ -6531,7 +6531,7 @@ js-beautify@^1.6.12, js-beautify@^1.6.14:
   resolved "https://registry.yarnpkg.com/js-beautify/-/js-beautify-1.13.13.tgz#756907d1728f329f2b84c42efd56ad17514620bf"
   integrity sha512-oH+nc0U5mOAqX8M5JO1J0Pw/7Q35sAdOsM5W3i87pir9Ntx6P/5Gx1xLNoK+MGyvHk4rqqRCE4Oq58H6xl2W7A==
   dependencies:
-    config-chain "^1.1.12"
+    com.github.luca168.auth.config-chain "^1.1.12"
     editorconfig "^0.15.3"
     glob "^7.1.3"
     mkdirp "^1.0.4"
@@ -8343,9 +8343,9 @@ postcss-discard-overridden@^4.0.1:
   dependencies:
     postcss "^7.0.0"
 
-postcss-load-config@^2.0.0:
+postcss-load-com.github.luca168.auth.config@^2.0.0:
   version "2.1.2"
-  resolved "https://registry.yarnpkg.com/postcss-load-config/-/postcss-load-config-2.1.2.tgz#c5ea504f2c4aef33c7359a34de3573772ad7502a"
+  resolved "https://registry.yarnpkg.com/postcss-load-com.github.luca168.auth.config/-/postcss-load-com.github.luca168.auth.config-2.1.2.tgz#c5ea504f2c4aef33c7359a34de3573772ad7502a"
   integrity sha512-/rDeGV6vMUo3mwJZmeHfEDvwnTKKqQ0S7OHUi/kJvvtx3aWtyWG2/0ZWnzCt2keEclwN6Tf0DST2v9kITdOKYw==
   dependencies:
     cosmiconfig "^5.0.0"
@@ -8358,7 +8358,7 @@ postcss-loader@^3.0.0:
   dependencies:
     loader-utils "^1.1.0"
     postcss "^7.0.0"
-    postcss-load-config "^2.0.0"
+    postcss-load-com.github.luca168.auth.config "^2.0.0"
     schema-utils "^1.0.0"
 
 postcss-merge-longhand@^4.0.11:
@@ -10827,7 +10827,7 @@ vue-jest@^3.0.4:
     chalk "^2.1.0"
     deasync "^0.1.15"
     extract-from-css "^0.4.4"
-    find-babel-config "^1.1.0"
+    find-babel-com.github.luca168.auth.config "^1.1.0"
     js-beautify "^1.6.14"
     node-cache "^4.1.1"
     object-assign "^4.1.1"

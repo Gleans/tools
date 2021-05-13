@@ -1,4 +1,4 @@
-package com.github.springtools.auth;
+package com.github.luca168.auth;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

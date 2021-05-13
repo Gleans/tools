@@ -15,6 +15,9 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <lombok.version>1.18.20</lombok.version>
+        <fastjson.version>1.2.73</fastjson.version>
+        <servlet-api.verison>2.5</servlet-api.verison>
     </properties>
 
     <dependencies>
@@ -27,6 +30,19 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.20</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servlet-api.verison}</version>
             <scope>provided</scope>
         </dependency>
 
