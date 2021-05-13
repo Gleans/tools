@@ -1,0 +1,203 @@
+/*==flex布局样式==*/
+.flex {
+  display: flex;
+}
+
+.inline-flex {
+  /* 内敛元素 */
+  display: inline-flex;
+}
+
+.flex-item {
+  flex: 1;
+}
+
+/* 容器上 start*/
+
+.direction-row {
+  /* (默认)主轴为水平方向，起点在左端 */
+  flex-direction: row;
+}
+
+.direction-row-reverse {
+  /* 主轴为水平方向，起点在右端 */
+  flex-direction: row-reverse;
+}
+
+.direction-column {
+  /* 主轴为垂直方向，起点在上沿 */
+  flex-direction: column;
+}
+
+.direction-column-reverse {
+  /* 主轴为垂直方向，起点在下沿。*/
+  flex-direction: column-reverse;
+}
+
+.flex-nowrap {
+  /* flex不换行 */
+  flex-wrap: nowrap;
+}
+
+.flex-wrap {
+  /* flex第一行在上方 */
+  flex-wrap: wrap;
+}
+
+.flex-wrap-reverse {
+  /* flex第一行在下方 */
+  flex-wrap: wrap-reverse;
+}
+
+/* justify 横向对齐方式 */
+
+.justify-start {
+  /* 左对齐 */
+  justify-content: flex-start;
+}
+
+.justify-end {
+  /* 右对齐 */
+  justify-content: flex-end;
+}
+
+.justify-center {
+  /* 居中 */
+  justify-content: center;
+}
+
+.justify-between {
+  /* 等宽排列 */
+  justify-content: space-between;
+}
+
+.justify-around {
+  /*  分散排列*/
+  justify-content: space-around;
+}
+
+/* align 上下对齐方式 */
+
+.align-start {
+  /* 上对齐 */
+  align-items: flex-start;
+}
+
+.align-end {
+  /* 下对齐 */
+  align-items: flex-end;
+}
+
+.align-center {
+  /* 上下居中 */
+  align-items: center;
+}
+
+.align-baseline {
+  /* 项目的第一行文字的基线对齐 */
+  align-items: baseline;
+}
+
+.align-stretch {
+  /* 如果项目未设置高度或设为auto，将占满整个容器的高度。 */
+  align-items: stretch;
+}
+
+/* 容器上 end*/
+
+/* 项目上start */
+
+.align-self-auto {
+  /* 继承父元素排列方式 */
+  align-self: auto;
+}
+
+.align-self-start {
+  /* 上对齐 */
+  align-self: flex-start;
+}
+
+.align-self-end {
+  /* 下对齐 */
+  align-self: flex-end;
+}
+
+.align-self-center {
+  /* 上下居中 */
+  align-self: center;
+}
+
+.align-self-baseline {
+  /* 项目的第一行文字的基线对齐 */
+  align-self: baseline;
+}
+
+.align-self-stretch {
+  /* 如果项目未设置高度或设为auto，将占满整个容器的高度。 */
+  align-self: stretch;
+}
+
+.flex-text-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flex-text-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.flex-text-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-text-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-text-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* 使当前项不缩小 */
+.flex-shrink {
+  flex-shrink: 0;
+}
+
+/* 别名 */
+
+/* 竖向排列 */
+.flex-column {
+  flex-direction: column;
+}
+
+/* 居中 */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 单行超出部分点点点 */
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 去掉input在type="number"时右边的上下箭头
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}

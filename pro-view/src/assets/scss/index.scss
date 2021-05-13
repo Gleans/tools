@@ -1,0 +1,103 @@
+@import "./variables.scss";
+//@import "./transition.scss";
+@import "element-ui";
+@import "flex";
+/* 改变主题色变量 */
+//$--color-primary: teal;
+
+// =====================================================================左侧菜单:::::::开始
+$--menu-background-color: $menuBg;
+$--menu-item-hover-fill: $menuHover;
+$--menu-item-font-color: $menuText;
+
+
+// =====================================================================左侧菜单:::::::结束
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-plus/lib/theme-chalk/fonts';
+
+@import "~element-plus/packages/theme-chalk/src/index";
+
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
+  Microsoft YaHei, Arial, sans-serif;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+// main-container global css
+.app-container {
+  padding: 20px;
+}
+//.el-menu{
+//  width: $sideBarWidth;
+//}
+.el-submenu .el-menu-item{
+  background-color: $subMenuBg;
+}
+
+.el-menu-item.is-active{
+    background-color: $menuActiveText;
+    color: $subMenuActiveText;
+}
+
+.el-tag--dark.el-tag--success .el-tag__close:hover{
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 16px;
+  transition: all .3s cubic-bezier(.645,.045,.355,1);
+  transform-origin: 100% 50%;
+  background-color: #b4bccc;
+}
