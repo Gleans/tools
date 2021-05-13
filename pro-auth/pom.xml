@@ -3,12 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.github.springtools</groupId>
-        <artifactId>SpringCloudPro</artifactId>
+        <groupId>com.github.luca</groupId>
+        <artifactId>springcloud-pro</artifactId>
         <version>0.0.1</version>
     </parent>
 
-    <artifactId>auth</artifactId>
+    <artifactId>pro-auth</artifactId>
     <version>0.0.1</version>
     <name>pro-auth</name>
     <description>鉴权模块</description>

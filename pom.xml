@@ -3,18 +3,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.springtools</groupId>
-    <artifactId>SpringCloudPro</artifactId>
+    <groupId>com.github.luca</groupId>
+    <artifactId>springcloud-pro</artifactId>
     <version>0.0.1</version>
-    <name>SpringCloudPro</name>
+    <name>springcloud-pro</name>
     <description>父项目</description>
     <packaging>pom</packaging>
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
-        <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
-        <spring-alibaba.version>2.2.1.RELEASE</spring-alibaba.version>
+        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+        <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
+        <spring-alibaba.version>2.2.5.RELEASE</spring-alibaba.version>
     </properties>
 
     <modules>
@@ -53,18 +53,10 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--支持Spring Boot 2.3.X-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${spring-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -106,4 +98,18 @@
             </snapshots>
         </repository>
     </repositories>
+    <pluginRepositories>
+        <!--阿里云代理Spring 插件仓库-->
+        <pluginRepository>
+            <id>spring-plugin</id>
+            <name>spring-plugin</name>
+            <url>https://maven.aliyun.com/repository/spring-plugin</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 </project>
