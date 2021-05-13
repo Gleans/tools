@@ -5,9 +5,9 @@
 | 工具 | 版本 |
 | ---- | ---- |
 | JDK| 1.8 |
-| spring-cloud.version | Hoxton.SR8 |
-| spring-boot.version | 2.3.2.RELEASE |
-| spring-alibaba.version | 2.2.5.RELEASE |
+| spring.cloud.version | Hoxton.SR8 |
+| spring.boot.version | 2.3.2.RELEASE |
+| spring.cloud.alibaba.version | 2.2.5.RELEASE |
 | Nacos Version | 2.0.1 |
 
 ## 模块注释  

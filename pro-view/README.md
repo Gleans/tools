@@ -10,6 +10,9 @@
 npm install -g @vue/cli
 ```
 
+关闭`IDE`扫描对`node——modules`扫描`index`  
+<div align="center"><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0bc1ea09bd3a48d184d954422145b8fb~tplv-k3u1fbpfcp-watermark.image"/></div>
+
 ### 介绍
 
 > 本项目参考 vue3-typescript-element-admin 项目开发 https://github.com/jddk/vue3-typescript-element-admin
