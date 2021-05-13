@@ -10,6 +10,15 @@
 | spring-alibaba.version | 2.2.5.RELEASE |
 | Nacos Version | 2.0.1 |
 
+## 模块注释  
+
+| 模块 | 功能 |备注 |
+| ---- | ---- |---- |
+| pro-common  | 公共模块 |公共实体、工具类等|
+| pro-auth  | 鉴权模块 |鉴权与管理资源一体化|
+| pro-gateway  | 网关模块 |路由转发|
+| pro-view  | 前端模块 |前后端分离|
+
 
 ## 安装 Nacos 
 
