@@ -17,10 +17,9 @@
 [https://github.com/alibaba/nacos/releases/download/2.0.1/nacos-server-2.0.1.zip](https://github.com/alibaba/nacos/releases/download/2.0.1/nacos-server-2.0.1.zip)
 
 本机是windows环境:  
-下载完成后解压.then(res=>{  
-    把里面的`nacos`文件夹放到你喜欢的位置  
-    然后在命令行定位到`nacos/bin`的位置（例如 d:;cd nacos\bin;）  
-}) 
+- 下载完成后解压 
+- 解压后`nacos`文件夹放到你喜欢的位置  
+- 在命令行定位到`nacos/bin`的位置（例如 d:;cd nacos\bin;）
 
 ### nacos持久化  
 
