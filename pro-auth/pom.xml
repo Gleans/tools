@@ -9,15 +9,13 @@
     </parent>
 
     <artifactId>pro-auth</artifactId>
-    <version>${parent.version}</version>
+    <version>${project.parent.version}</version>
     <name>pro-auth</name>
     <description>鉴权模块</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <mybatis.plus.version>3.4.2</mybatis.plus.version>
-        <mysql.version>8.0.25</mysql.version>
     </properties>
 
     <dependencies>
@@ -63,13 +61,12 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mybatis.plus.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.luca168</groupId>
             <artifactId>pro-common</artifactId>
-            <version>${parent.version}</version>
+            <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>
 
@@ -87,12 +84,6 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-jwt</artifactId>
         </dependency>
 
     </dependencies>
