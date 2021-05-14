@@ -1,39 +1,29 @@
 package com.github.luca168.auth.security;
 
-import com.github.luca168.auth.config.CustomAccessDeniedHandler;
-import com.github.luca168.auth.config.CustomAuthenticationEntryPoint;
+import com.github.luca168.auth.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true, proxyTargetClass = true)
+//@EnableGlobalMethodSecurity(prePostEnabled = true, proxyTargetClass = true)
 public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
-
-    private UserDetailsService userDetailsService;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public void setCustomAuthenticationEntryPoint(CustomAuthenticationEntryPoint customAuthenticationEntryPoint) {
-        this.customAuthenticationEntryPoint = customAuthenticationEntryPoint;
-    }
-
-    @Autowired
-    public void setUserDetailsService(UserDetailsService userDetailsService) {
-        this.userDetailsService = userDetailsService;
-    }
+    private UserServiceImpl userDetailsService;
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -45,7 +35,10 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        if (passwordEncoder == null) {
+            passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        }
+        return passwordEncoder;
     }
 
     @Bean
@@ -60,12 +53,21 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/signin/**").permitAll()
-                .antMatchers("/api/glee/**").hasAnyAuthority("ADMIN", "USER")
-                .antMatchers("/api/users/**").hasAuthority("ADMIN")
-                .antMatchers("/api/**").authenticated()
-                .anyRequest().authenticated()
-                .and().exceptionHandling().authenticationEntryPoint(customAuthenticationEntryPoint).accessDeniedHandler(new CustomAccessDeniedHandler());
+                .antMatchers("/echo/**").permitAll()
+                .anyRequest().authenticated();
+//                .and().exceptionHandling().authenticationEntryPoint(customAuthenticationEntryPoint).accessDeniedHandler(new CustomAccessDeniedHandler());
     }
 
+    @Override
+    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder());
+    }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        // 忽略匹配项
+        web.ignoring().antMatchers("/echo/**");
+        super.configure(web);
+    }
 }

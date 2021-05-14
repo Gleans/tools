@@ -4,10 +4,13 @@ package com.github.luca168.auth.domain;
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -17,25 +20,26 @@ import java.util.Set;
 @TableName("user")
 public class UserDO implements Serializable, UserDetails {
 
-    @TableId(value = "user_id",type = IdType.INPUT)
+    @TableId(value = "user_id", type = IdType.INPUT)
     private String userId;
 
     private String username;
     private String password;
 
-    private Long createdate;
+    private Long createTime;
 
-    private Long changedate;
-
+    private Long updateTime;
+    @TableField(exist = false)
     private String token;
-
+    @TableField(exist = false)
     private Set<String> roles;
-
+    @TableField(exist = false)
     private String avatar;
 
     /**
      * 微信OpenId
      */
+    @TableField(exist = false)
     private String wxOpenId;
 
     /**
@@ -49,7 +53,11 @@ public class UserDO implements Serializable, UserDetails {
 
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
-        return null;
+        Set<GrantedAuthority> authSet = new HashSet<>();
+        if (Objects.nonNull(this.roles)) {
+            this.roles.forEach(role -> authSet.add(new SimpleGrantedAuthority(role)));
+        }
+        return authSet;
     }
 
     @Override

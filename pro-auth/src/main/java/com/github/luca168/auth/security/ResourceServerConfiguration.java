@@ -1,3 +1,4 @@
+/*
 package com.github.luca168.auth.security;
 
 import org.springframework.context.annotation.Configuration;
@@ -14,4 +15,4 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         resources.resourceId("api");
     }
 
-}
+}*/
