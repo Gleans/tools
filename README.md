@@ -19,7 +19,7 @@
 | pro-gateway  | 网关模块 |路由转发|
 | pro-view  | 前端模块 |前后端分离|
 
-
+MySQL文件：[cloud_pro.sql](./pro-auth/src/main/resources/sql/cloud_pro.sql)
 ## 安装 Nacos 
 
 下载地址：  
