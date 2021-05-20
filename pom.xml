@@ -16,6 +16,9 @@
         <spring.cloud.version>Hoxton.SR8</spring.cloud.version>
         <spring.boot.version>2.3.2.RELEASE</spring.boot.version>
         <spring.cloud.alibaba.version>2.2.5.RELEASE</spring.cloud.alibaba.version>
+        <mysql.version>8.0.25</mysql.version>
+        <mybatis.plus.version>3.4.2</mybatis.plus.version>
+        <spring.security.jwt.version>1.1.1.RELEASE</spring.security.jwt.version>
     </properties>
 
     <modules>
@@ -68,6 +71,16 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -77,11 +90,11 @@
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring.boot.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
-
     <repositories>
         <!--阿里云主仓库，代理了maven central和jcenter仓库-->
         <repository>
